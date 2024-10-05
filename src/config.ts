@@ -17,11 +17,7 @@ export const tabs = [
     link: "./tags",
   },
   {
-    label: "运动",
-    link: "https://cycling.sunguoqi.com",
-  },
-  {
-    label: "摄影",
+    label: "影集",
     link: "https://camlife.cn",
   },
   {
