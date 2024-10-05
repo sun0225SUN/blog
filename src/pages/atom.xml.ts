@@ -23,5 +23,7 @@ export async function GET() {
       ...post.data,
       link: `/posts/${post.slug}/`,
     })),
+    customData:
+      "<follow_challenge><feedId>41477724771147784</feedId><userId>54887272939958272</userId></follow_challenge>",
   })
 }
