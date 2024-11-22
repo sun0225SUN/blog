@@ -8,20 +8,20 @@ export const site = {
 }
 
 export const tabs = [
-  {
-    label: "归档",
-    link: "./archive",
-  },
-  {
-    label: "标签",
-    link: "./tags",
-  },
+  // {
+  //   label: "归档",
+  //   link: "./archive",
+  // },
+  // {
+  //   label: "标签",
+  //   link: "./tags",
+  // },
   {
     label: "影集",
     link: "https://camlife.cn",
   },
   {
     label: "关于",
-    link: "./about",
+    link: "https://sunguoqi.com",
   },
 ]

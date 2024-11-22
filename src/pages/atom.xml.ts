@@ -19,10 +19,16 @@ export async function GET() {
       process.env.NODE_ENV === "development"
         ? "http://localhost:4321"
         : site.url,
-    items: posts.map((post: PostProps) => ({
-      ...post.data,
-      link: `/posts/${post.slug}/`,
-    })),
+    items: posts
+      .sort((a, b) => {
+        const aDate = a.data.pubDate ? new Date(a.data.pubDate) : new Date()
+        const bDate = b.data.pubDate ? new Date(b.data.pubDate) : new Date()
+        return bDate.getTime() - aDate.getTime()
+      })
+      .map((post: PostProps) => ({
+        ...post.data,
+        link: `/posts/${post.slug}/`,
+      })),
     customData:
       "<follow_challenge><feedId>41477724771147784</feedId><userId>54887272939958272</userId></follow_challenge>",
   })
