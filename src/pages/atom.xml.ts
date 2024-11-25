@@ -1,5 +1,6 @@
 import rss from "@astrojs/rss"
 import { getCollection } from "astro:content"
+import sanitizeHtml from "sanitize-html"
 import { site } from "~/config"
 
 interface PostProps {
@@ -7,7 +8,9 @@ interface PostProps {
   data: {
     title: string
     pubDate: Date
+    description?: string
   }
+  body: string
 }
 
 export async function GET() {
@@ -19,16 +22,13 @@ export async function GET() {
       process.env.NODE_ENV === "development"
         ? "http://localhost:4321"
         : site.url,
-    items: posts
-      .sort((a, b) => {
-        const aDate = a.data.pubDate ? new Date(a.data.pubDate) : new Date()
-        const bDate = b.data.pubDate ? new Date(b.data.pubDate) : new Date()
-        return bDate.getTime() - aDate.getTime()
-      })
-      .map((post: PostProps) => ({
-        ...post.data,
-        link: `/posts/${post.slug}/`,
-      })),
+    items: posts.map((post: PostProps) => ({
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate,
+      link: `/posts/${post.slug}/`,
+      content: sanitizeHtml(post.body),
+    })),
     customData:
       "<follow_challenge><feedId>41477724771147784</feedId><userId>54887272939958272</userId></follow_challenge>",
   })
