@@ -1,2 +1,8 @@
+``` bash
+git remote add upstream https://github.com/sun0225SUN/blog-air
 
-inspired by [wordpress-dear](https://github.com/imjeff/wordpress-dear)
+git fetch upstream
+
+git merge upstream/main --allow-unrelated-histories
+
+```
