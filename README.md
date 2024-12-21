@@ -1,3 +1,10 @@
-## todo
+## update
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/de94319e-7049-462a-8022-817fe915045c/deploy-status)](https://app.netlify.com/sites/blog-air/deploys)
+```
+git remote add upstream https://github.com/sun0225SUN/blog-air
+
+git fetch upstream
+
+git merge upstream/main --allow-unrelated-histories
+
+```
