@@ -1,6 +1,6 @@
 import { Github, Twitter } from "lucide-react"
 
-export const defaultLanguage: string = "en"
+export const defaultLanguage: string = "zh"
 
 export const latestPosts = 8
 
