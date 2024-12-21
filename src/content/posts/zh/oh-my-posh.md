@@ -2,8 +2,7 @@
 title: "Oh My Posh | Windows Terminal 美化指南"
 description: "简洁清爽的 IDE 主题，赏心悦目的代码配色，逼格拉满的 Terminal 终端，极致丝滑的码字体验，总是让人欲罢不能。"
 pubDate: "2023-07-15"
-image:
-  url: "https://assets.sunguoqi.com/images/202311220244903.webp"
+ogImage: "https://assets.guoqi.dev/images/202311220244903.webp"
 tags: ["Tutorial"]
 ---
 
@@ -11,7 +10,7 @@ tags: ["Tutorial"]
 
 在 Windows 系统中，我们最常使用的 Shell 工具莫过于 PowerShell 了。虽然它真的很 Power，但纯天然的颜值还是稍显逊色，如何拥有更加 beautiful 的 PowerShell 呢？
 
-<img src="https://assets.sunguoqi.com/images/202311250146674.webp">
+<img src="https://assets.guoqi.dev/images/202311250146674.webp">
 
 ## Windows Terminal
 
@@ -21,19 +20,19 @@ Windows Terminal 是一个集成了多个命令行环境的终端应用程序。
 
 安装 Windows Terminal 方法也比较简单，我们直接打开 Microsoft Store 下载安装即可。
 
-<img src="https://assets.sunguoqi.com/images/202311250147264.webp">
+<img src="https://assets.guoqi.dev/images/202311250147264.webp">
 
 Windows Terminal 提供了许多功能和特性，包括多标签页支持、自定义主题、快速启动、分屏布局、Unicode 字符支持、GPU 加速等。它还支持使用不同的配置文件来定义每个命令行环境的外观和行为。
 
 PowerShell 美化第一步，我们可以直接在 Windows Terminal 中个性化修改它的外观。
 
-<img src="https://assets.sunguoqi.com/images/202311250147174.webp">
+<img src="https://assets.guoqi.dev/images/202311250147174.webp">
 
 ## Oh My Posh
 
 除了在 Windows Terminal 中个性化修改 PowerShell 的外观，我们还可以使用 [Oh My Posh](https://ohmyposh.dev/)来进一步的美化 PowerShell。
 
-<img src="https://assets.sunguoqi.com/images/202311250147163.webp">
+<img src="https://assets.guoqi.dev/images/202311250147163.webp">
 
 #### 什么是 Oh My Posh
 
@@ -47,7 +46,7 @@ Oh My Posh 提供了丰富的主题和配置选项，可以让用户根据自己
 
 安装 Oh My Posh 的方法有多种，在 Windows 中，你可以直接在 Microsoft Store 获取它。
 
-<img src="https://assets.sunguoqi.com/images/202311250148937.webp">
+<img src="https://assets.guoqi.dev/images/202311250148937.webp">
 
 #### 使用 Oh My Posh
 
@@ -67,7 +66,7 @@ Oh My Posh 配置成功后，我们重新打开 Windows Terminal 会发现输入
 
 打开 [Nerd Fonts](https://www.nerdfonts.com/font-downloads) 字体的下载地址，选择我们自己喜欢的字体下载安装即可，这里我选择的字体是`Hack Nerd Font`
 
-<img src="https://assets.sunguoqi.com/images/202311250148284.webp">
+<img src="https://assets.guoqi.dev/images/202311250148284.webp">
 
 #### 使用 Nerd Fonts
 
@@ -90,11 +89,11 @@ Nerd 字体安装成功后，我们需要把终端的使用字体配置为我们
 
 > 当然你也可以在 Windows Terminal 的图形界面中修改默认字体及 Powershell 的使用字体。
 
-<img src="https://assets.sunguoqi.com/images/202311250148578.webp">
+<img src="https://assets.guoqi.dev/images/202311250148578.webp">
 
 配置好字体后重新打开终端，就可以看到我们美化后的效果啦。
 
-<img src="https://assets.sunguoqi.com/images/202311250148611.webp">
+<img src="https://assets.guoqi.dev/images/202311250148611.webp">
 
 #### 选择主题
 
@@ -104,7 +103,7 @@ Oh My Posh 官方提供了许多开箱即用的主题供我们选择。
 
 [https://ohmyposh.dev/docs/themes](https://ohmyposh.dev/docs/themes)
 
-<img src="https://assets.sunguoqi.com/images/202311250149788.webp">
+<img src="https://assets.guoqi.dev/images/202311250149788.webp">
 
 #### 使用主题
 
@@ -121,6 +120,6 @@ oh-my-posh init pwsh --config 'C:/Users/Posh/jandedobbeleer.omp.json' | Invoke-E
 - 在 VSCode 中同样需要配置 Terminal 的字体为 Nerd 字体才可以正常显示图标
 - 在 Windows 中使用 neofetch 命令的教程：[点我查看](https://www.makeuseof.com/how-to-install-and-use-neofetch-on-windows/)
 
-<img src="https://assets.sunguoqi.com/images/202311250149384.webp">
+<img src="https://assets.guoqi.dev/images/202311250149384.webp">
 
-<img src="https://assets.sunguoqi.com/images/202311250149895.webp">
+<img src="https://assets.guoqi.dev/images/202311250149895.webp">

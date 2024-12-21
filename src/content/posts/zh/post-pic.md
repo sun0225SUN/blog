@@ -2,8 +2,7 @@
 title: "使用 Flask 快速构建豆瓣图书/电影海报 WebAPI"
 description: "新年新气象，最近一直在折腾新博客，准备好好装修一番"
 pubDate: "2023-01-09"
-image:
-  url: "https://assets.sunguoqi.com/images/202312091442060.webp"
+ogImage: "https://assets.guoqi.dev/images/202312091442060.webp"
 tags: ["Development"]
 ---
 
@@ -13,7 +12,7 @@ tags: ["Development"]
 
 于是就想在新网站中也加入该元素，另一方面也可以促进自己**多阅读**，**多观影**。<br/>
 
-<img src="https://assets.sunguoqi.com/images/202312091442060.webp" />
+<img src="https://assets.guoqi.dev/images/202312091442060.webp" />
 
 ## 一、初步探索
 
@@ -23,45 +22,45 @@ emmmm，怎么引入呢？直接开发插件？还没学会 halo 的插件如何
 
 于是便找到了该仓库 [传送门](https://github.com/sadjjk/DoubanPoster)
 
-<img src="https://assets.sunguoqi.com/images/202312091442763.webp" />
+<img src="https://assets.guoqi.dev/images/202312091442763.webp" />
 
 仓库已经是三年前创建的了，先看看代码可不可以正常跑吧！
 
 果然。。。有 Bug，哈哈哈！
 
-<img src="https://assets.sunguoqi.com/images/202312091443113.webp" />
+<img src="https://assets.guoqi.dev/images/202312091443113.webp" />
 
 ## 二、解决 Bug
 
 打印个状态码，先初步诊断一下，看看 Bug 到底出在哪？
 
-<img src="https://assets.sunguoqi.com/images/202312091444281.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091444281.webp"/>
 
 运行一下！
 
-<img src="https://assets.sunguoqi.com/images/202312091445914.webp" />
+<img src="https://assets.guoqi.dev/images/202312091445914.webp" />
 
 <strong>418</strong>，还是第一次碰到这个状态码，<strong>Google 一下！</strong>
 
-<img src="https://assets.sunguoqi.com/images/202312091445494.webp" />
+<img src="https://assets.guoqi.dev/images/202312091445494.webp" />
 
-<img src="https://assets.sunguoqi.com/images/202312091445751.webp" />
+<img src="https://assets.guoqi.dev/images/202312091445751.webp" />
 
 我是一个茶壶，哈哈哈，IT 技术充满了乐趣。
 
-<img src="https://assets.sunguoqi.com/images/202312091446934.webp" />
+<img src="https://assets.guoqi.dev/images/202312091446934.webp" />
 
 阿这，不太理解。。。前辈虽然写了`UA列表`，但是在请求的时候竟然不加到`headers`里去，怪不得豆瓣检测出来你是个爬虫，哈哈。
 
 纠正一下吧！
 
-<img src="https://assets.sunguoqi.com/images/202312091446486.webp" />
+<img src="https://assets.guoqi.dev/images/202312091446486.webp" />
 
 完美运行啦！
 
-<img src="https://assets.sunguoqi.com/images/202312091447411.webp" />
+<img src="https://assets.guoqi.dev/images/202312091447411.webp" />
 
-<img src="https://assets.sunguoqi.com/images/202312091447491.webp" />
+<img src="https://assets.guoqi.dev/images/202312091447491.webp" />
 
 但是。。。
 
@@ -99,7 +98,7 @@ Django 自学过一段时间，比较容易上手，但 Django **“太健全了
 
 听说 Flask 比较轻量，看看官网，好家伙，五行输出 **hello world**，我看行，就它了✅
 
-<img src="https://assets.sunguoqi.com/images/202312091448253.webp" />
+<img src="https://assets.guoqi.dev/images/202312091448253.webp" />
 
 ## 五、正式开发
 
@@ -111,7 +110,7 @@ Django 自学过一段时间，比较容易上手，但 Django **“太健全了
 
 算了，不配了，直接上服务器。
 
-<img src="https://assets.sunguoqi.com/images/202312091448864.webp" />
+<img src="https://assets.guoqi.dev/images/202312091448864.webp" />
 
 ### 2, Hello world
 
@@ -129,7 +128,7 @@ def hello_world():
 
 你好，世界！就是这么优雅🎉
 
-<img src="https://assets.sunguoqi.com/images/202312091448535.webp" />
+<img src="https://assets.guoqi.dev/images/202312091448535.webp" />
 
 ### 3、编写路由逻辑
 
@@ -152,18 +151,18 @@ def img():
     return send_file(img)
 ```
 
-<img src="https://assets.sunguoqi.com/images/202312091449847.webp" />
+<img src="https://assets.guoqi.dev/images/202312091449847.webp" />
 
-<img src="https://assets.sunguoqi.com/images/202312091449813.webp" />
+<img src="https://assets.guoqi.dev/images/202312091449813.webp" />
 
 当然，其实在此期间还经历了一番猛如虎的调试过程🥹
 
-<img src="https://assets.sunguoqi.com/images/202312091449225.webp" />
+<img src="https://assets.guoqi.dev/images/202312091449225.webp" />
 
-<img src="https://assets.sunguoqi.com/images/202312091450044.webp" />
+<img src="https://assets.guoqi.dev/images/202312091450044.webp" />
 
 ## 六、大功告成
 
 **Github: https://github.com/sun0225SUN/DoubanPoster**
 
-<img src="https://assets.sunguoqi.com/images/202312091451842.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091451842.webp"/>

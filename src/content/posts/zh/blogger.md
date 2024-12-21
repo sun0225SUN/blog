@@ -2,8 +2,7 @@
 title: "关于个人独立博客，我的折腾和思考"
 description: "在如今这个快节奏、碎片化的时代里，仍然有一群人能秉承着对科学技术的崇拜、怀揣着对美好生活的向往，保持着独立思考的能力，静静沉淀、悄悄改变、慢慢成长、默默奉献..."
 pubDate: "2023-12-09"
-image:
-  url: "https://assets.sunguoqi.com/images/202312091513648.web"
+ogImage: "https://assets.guoqi.dev/images/202312091513648.web"
 tags: ["Blogger"]
 ---
 
@@ -19,10 +18,10 @@ tags: ["Blogger"]
 
 起初，我尝试在 CSDN 上写博客，收获了很多人的阅读和关注，成就感爆棚（CSDN 现已停更，后面准备更掘金）
 
-<img src="https://assets.sunguoqi.com/images/202312091523941.webp"/>
-<img src="https://assets.sunguoqi.com/images/202312091524346.webp"/>
-<img src="https://assets.sunguoqi.com/images/202312091525477.webp"/>
-<img src="https://assets.sunguoqi.com/images/202312091525448.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091523941.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091524346.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091525477.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091525448.webp"/>
 
 后来，我开始折腾个人博客，零基础的我花了几天时间搭建了一个基于 Hexo + Github 的静态博客站点。
 
@@ -31,8 +30,8 @@ tags: ["Blogger"]
 
 https://gh.sunguoqi.com
 
-<img src="https://assets.sunguoqi.com/images/202312091526623.webp"/>
-<img src="https://assets.sunguoqi.com/images/202312091527369.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091526623.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091527369.webp"/>
 
 考研备考期间，学业压力比较重，就没什么心思管理博客了。毕业后我打算重新来过。
 
@@ -42,13 +41,13 @@ https://gh.sunguoqi.com
 
 Halo 框架官网：https://halo.run
 
-<img src="https://assets.sunguoqi.com/images/202312091527843.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091527843.webp"/>
 
 Halo 的确很强大，而且免费、开源。在 GitHub 上收获了 29.6k 的 star（数据统计截至本文发表日期），推荐大家使用。
 
 https://github.com/halo-dev/halo
 
-<img src="https://assets.sunguoqi.com/images/202312110346954.webp"/>
+<img src="https://assets.guoqi.dev/images/202312110346954.webp"/>
 
 不过...虽然...但是...emm...就在上个月，我又回归到了 Hexo 框架阵营。
 
@@ -56,7 +55,7 @@ Hexo 框架，安知鱼主题项目地址：
 
 https://github.com/anzhiyu-c/hexo-theme-anzhiyu
 
-<img src="https://assets.sunguoqi.com/images/202312091528611.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091528611.webp"/>
 
 ## 写博客给我带来了什么
 
@@ -66,7 +65,7 @@ https://github.com/anzhiyu-c/hexo-theme-anzhiyu
 
 大佬们的站点往往非常简洁，内容含金量很高。而大部分的萌新则更执着于花大量的时间去折腾网站的功能、样式，博客内容往往参杂大量水分。
 
-<img src="https://assets.sunguoqi.com/images/202312091541457.webp"/>
+<img src="https://assets.guoqi.dev/images/202312091541457.webp"/>
 
 我认为这个现象很正常，我刚开始写博客的时候也是如此。
 
@@ -86,7 +85,7 @@ https://github.com/anzhiyu-c/hexo-theme-anzhiyu
 
 店长的博客：https://akilar.top
 
-<img src="https://assets.sunguoqi.com/images/202312091542346.webp" />
+<img src="https://assets.guoqi.dev/images/202312091542346.webp" />
 
 ---
 
@@ -102,7 +101,7 @@ https://github.com/anzhiyu-c/hexo-theme-anzhiyu
 
 梳理知识体系，记录所思所想。沉淀下来的东西，才是我们人生最宝贵的财富。
 
-<img src="https://assets.sunguoqi.com/images/202312110226018.webp"/>
+<img src="https://assets.guoqi.dev/images/202312110226018.webp"/>
 
 ## 博客内容方向思考
 
@@ -122,13 +121,13 @@ https://brain.sunguoqi.com
 
 如此以来，我觉得优雅多了。
 
-<img src="https://assets.sunguoqi.com/images/202312091544680.webp" />
+<img src="https://assets.guoqi.dev/images/202312091544680.webp" />
 
 ## 写在后面
 
 书写本文本是临时起意，当我看到...
 
-<img src="https://assets.sunguoqi.com/images/202312110244707.webp" >
+<img src="https://assets.guoqi.dev/images/202312110244707.webp" >
 
 在如今这个快节奏、碎片化的时代里，仍然有一群人能秉承着对科学技术的崇拜、怀揣着对美好生活的向往，保持着独立思考的能力，静静沉淀、悄悄改变、慢慢成长、默默奉献...
 

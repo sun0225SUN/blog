@@ -2,8 +2,7 @@
 title: "请接受像“屎”一样的开始"
 description: "面对一个全新的事情，刚开始做不完美几乎是板上钉钉的事情。如果要求自己上来就做的很好，就相当于找了根绳子把自己的手和脚都绑了起来，那又该如何行走呢。接受像“屎”一样的开始，我想，我现在便可以起航了！"
 pubDate: "2023-01-27"
-image:
-  url: "https://assets.sunguoqi.com/images/202311220236935.webp"
+ogImage: "https://assets.guoqi.dev/images/202311220236935.webp"
 tags: ["Thinking"]
 ---
 
@@ -21,7 +20,7 @@ tags: ["Thinking"]
 
 其次，富文本编辑器不支持很多功能，不能嵌入 HTML 代码，不能优雅地复制粘贴等等。
 
-<img src="https://assets.sunguoqi.com/images/202311250116901.webp"/>
+<img src="https://assets.guoqi.dev/images/202311250116901.webp"/>
 
 作为习惯了使用 Markdown 语法来记录文字的键盘工作者而言，突然使用富文本编辑器就如同让一个有经验的 Web 开发者使用 Adobe Dreamweaver 去编写网页。
 
@@ -33,7 +32,7 @@ tags: ["Thinking"]
 
 但文章一旦发布，微信公众平台只留给作者修改几个字的机会，对于强迫症而言，达咩~
 
-<img src="https://assets.sunguoqi.com/images/202311250116993.webp"/>
+<img src="https://assets.guoqi.dev/images/202311250116993.webp"/>
 
 ### 公众号没有留言功能
 
@@ -47,13 +46,13 @@ tags: ["Thinking"]
 
 虽然可以通过其他途径给个人号开通留言功能，但是相对来说成本比较高。（暂时不考虑）
 
-<img src="https://assets.sunguoqi.com/images/202311250117278.webp"/>
+<img src="https://assets.guoqi.dev/images/202311250117278.webp"/>
 
 ### 没有粉丝基础，写了东西没人看
 
 在考研备考期间，我详细了解了一下**复利**的概念。
 
-<img src="https://assets.sunguoqi.com/images/202311250117498.webp"/>
+<img src="https://assets.guoqi.dev/images/202311250117498.webp"/>
 
 正如上图所示，当我们付出了宝贵的时间，很用心地做了一件事情之后，却迟迟不见收益。
 
@@ -75,4 +74,4 @@ tags: ["Thinking"]
 
 接受像“屎”一样的开始，我想，我现在便可以起航了！
 
-<img src="https://assets.sunguoqi.com/images/202311250117553.webp"/>
+<img src="https://assets.guoqi.dev/images/202311250117553.webp"/>

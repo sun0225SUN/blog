@@ -2,8 +2,7 @@
 title: "小孙同学 の 第二大脑正在施工中..."
 description: "从无序到有序，从碎片化到结构化，从输入到输出，当知识完整的经过了你的大脑，那我想他会永远属于你！"
 pubDate: "2023-03-26"
-image:
-  url: "https://assets.sunguoqi.com/images/202311220242432.webp"
+ogImage: "https://assets.guoqi.dev/images/202311220242432.webp"
 tags: ["Learn"]
 ---
 
@@ -11,7 +10,7 @@ tags: ["Learn"]
 
 https://github.com/WindrunnerMax/EveryDay
 
-![](https://assets.sunguoqi.com/images/202311250059760.webp)
+![](https://assets.guoqi.dev/images/202311250059760.webp)
 
 该仓库记录了博主从 `2020.02.25` 至今的学习历程，在对博主深感敬佩的同时，其 `Readme.md` 中有这样一句话，让我深有感触。
 
@@ -27,7 +26,7 @@ https://github.com/WindrunnerMax/EveryDay
 
 无论是被动的、主动的还是无意识的学习，当我们对其进行一定的抽象后，你会发现它们都遵循一个最简单的逻辑。
 
-![](https://assets.sunguoqi.com/images/202311250100850.webp)
+![](https://assets.guoqi.dev/images/202311250100850.webp)
 
 在信息时代，我们每天都会接收到无比庞大的信息，但究竟哪些信息真正内化成了我们自己的知识呢？
 
@@ -47,7 +46,7 @@ https://mp.weixin.qq.com/s/z05Ec23oN2BwYxT-eb8G0Q
 - Why：为什么要构建一套知识管理系统？
 - How：如何构建我们的知识管理系统？
 
-<img width="360" src="https://assets.sunguoqi.com/images/202311250109543.webp" />
+<img width="360" src="https://assets.guoqi.dev/images/202311250109543.webp" />
 
 ## 在人工智能时代谋生存
 
@@ -55,7 +54,7 @@ https://mp.weixin.qq.com/s/z05Ec23oN2BwYxT-eb8G0Q
 
 人工智能会取代人类嘛？
 
-![](https://assets.sunguoqi.com/images/202311250112211.webp)
+![](https://assets.guoqi.dev/images/202311250112211.webp)
 
 和人类学习行为类似，机器学习也同样遵循`输入信息`——`处理信息`——`输出信息`这套最简单的逻辑
 
@@ -67,7 +66,7 @@ https://mp.weixin.qq.com/s/z05Ec23oN2BwYxT-eb8G0Q
 
 学过《数据结构》这门课程的同学肯定会对下面这张图比较熟悉。
 
-<img width="200" src="https://assets.sunguoqi.com/images/202311250101788.webp"/>
+<img width="200" src="https://assets.guoqi.dev/images/202311250101788.webp"/>
 
 是的，这是常规链表中的一个结点。
 
@@ -77,17 +76,17 @@ https://mp.weixin.qq.com/s/z05Ec23oN2BwYxT-eb8G0Q
 
 如果我们以线性的方式将数据组织起来，它会变成下面这个样子。
 
-![](https://assets.sunguoqi.com/images/202311250102444.webp)
+![](https://assets.guoqi.dev/images/202311250102444.webp)
 
 在现实生活中，当我们遇到一个非常复杂的问题时，我们通常会将其拆分成若干个子问题进行分析。
 
 数据也是如此，它应该具备相应的层级。
 
-![](https://assets.sunguoqi.com/images/202311250109107.webp)
+![](https://assets.guoqi.dev/images/202311250109107.webp)
 
 虽然我们对问题进行了拆分，但其子问题也很可能相互关联，所以在层级的基础上，我们还应保障子问题的关联性。
 
-<img width="500" src="https://assets.sunguoqi.com/images/202311250113437.webp"/>
+<img width="500" src="https://assets.guoqi.dev/images/202311250113437.webp"/>
 
 将海量信息关联在一起，看似无序，实则有序，计算机对信息管理的方式远远超过人类。
 
@@ -105,7 +104,7 @@ https://mp.weixin.qq.com/s/z05Ec23oN2BwYxT-eb8G0Q
 
 源码：https://github.com/sun0225SUN/Brain
 
-![](https://assets.sunguoqi.com/images/202311250103611.webp)
+![](https://assets.guoqi.dev/images/202311250103611.webp)
 
 `2023.03.24`，我搭建了该网站，日后，它会不断更新我的所学及产出。
 

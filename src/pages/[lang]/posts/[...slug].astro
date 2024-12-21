@@ -1,6 +1,6 @@
 ---
 import { langs } from "~/i18n/ui"
-import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+import { getLangFromUrl } from "~/i18n/utils"
 import MainLayout from "~/layouts/main.astro"
 import "~/styles/post.css"
 import "~/styles/post.scss"
@@ -22,7 +22,6 @@ export async function getStaticPaths() {
 }
 
 const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
 
 const { post } = Astro.props
 ---
@@ -37,11 +36,6 @@ const { post } = Astro.props
     </div>
 
     <div class="my-6" set:html={post.rendered.html} />
-
-    <div class="my-3 text-gray-500 dark:text-white/80">
-      {t("post.updated")}
-      {formatDate(post.data.updatedDate)}
-    </div>
 
     <div class="space-x-3 pb-10 text-sm text-gray-500">
       {
