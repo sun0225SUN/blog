@@ -2,8 +2,8 @@
 import "~/styles/globals.css"
 import { NoiseBackground } from "~/components/react/noise-background"
 import { CodeBackground } from "~/components/react/code-background"
-import { ClientRouter } from "astro:transitions"
 import { getLangFromUrl } from "~/i18n/utils"
+import { GoogleAnalytics } from "astro-google-analytics"
 import { en, zh } from "~/config"
 
 const lang = getLangFromUrl(Astro.url)
@@ -13,7 +13,7 @@ const { title, description, ogImage } = Astro.props
 const ogImageURL = new URL(ogImage, Astro.site).href
 const permalink = new URL(Astro.url.pathname, Astro.site).href
 
-const config = lang === "zh" ? zh.meta : en.meta
+const config = lang === "zh" ? zh : en
 ---
 
 <!doctype html>
@@ -21,18 +21,18 @@ const config = lang === "zh" ? zh.meta : en.meta
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={config.favicon} />
+    <link rel="icon" type="image/svg+xml" href={config.meta.favicon} />
     <title>
       {
         !title
-          ? `${config.title} - ${config.slogan}`
-          : `${config.title} - ${title}`
+          ? `${config.meta.title} - ${config.meta.slogan}`
+          : `${config.meta.title} - ${title}`
       }
     </title>
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content={!description ? config.description : description}
+      content={!description ? config.meta.description : description}
     />
 
     <!-- Open Graph / Facebook -->
@@ -49,8 +49,6 @@ const config = lang === "zh" ? zh.meta : en.meta
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageURL} />
 
-    <ClientRouter fallback="swap" />
-
     <script is:inline>
       const setTheme = () => {
         const theme =
@@ -61,8 +59,6 @@ const config = lang === "zh" ? zh.meta : en.meta
 
         if (theme === "dark") {
           document.documentElement.classList.add("dark")
-        } else {
-          document.documentElement.classList.remove("dark")
         }
       }
 
@@ -78,6 +74,12 @@ const config = lang === "zh" ? zh.meta : en.meta
       src="https://umami.guoqi.dev/script.js"
       data-website-id="d0a0e127-4830-4afb-bedf-3bdc856c0d94"
       data-domains="blog.sunguoqi.com"></script>
+
+    {
+      config.googleAnalyticsId && (
+        <GoogleAnalytics id={config.googleAnalyticsId} />
+      )
+    }
   </head>
   <body
     class="flex min-h-screen w-full justify-center px-6 dark:bg-[#121212] dark:text-white md:px-0"
