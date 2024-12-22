@@ -4,7 +4,7 @@ export const defaultLanguage: string = "zh"
 
 export const common = {
   meta: {
-    favicon: "/avatar.png",
+    favicon: "/favicon.ico",
     url: "https://blog.sunguoqi.com",
   },
   googleAnalyticsId: "G-W37MQ05DRE",
