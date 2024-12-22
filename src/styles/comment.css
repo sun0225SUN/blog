@@ -8,6 +8,11 @@
   height: 150% !important;
 }
 
+/* comments container */
+.tk-comments-container {
+  margin-top: 50px !important;
+}
+
 /* avatar*/
 .tk-avatar {
   background-color: transparent !important;
