@@ -1,11 +1,13 @@
 ---
 import PostList from "~/components/astro/post-list.astro"
+import { en, zh } from "~/config"
 import { getLangFromUrl } from "~/i18n/utils"
 import MainLayout from "~/layouts/main.astro"
 import { getPostsByLocale } from "~/utils"
 import { getLanguagePaths } from "~/utils/langs"
 
 const lang = getLangFromUrl(Astro.url)
+const pageMeta = lang === "zh" ? zh.pageMeta : en.pageMeta
 
 export function getStaticPaths() {
   return getLanguagePaths()
@@ -28,22 +30,24 @@ const postsByYear = posts.reduce(
 const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
 ---
 
-<MainLayout>
-  <div class="relative z-10 pb-10">
-    {
-      years.map((year) => (
-        <div class="year-group my-8">
-          <h2 class="my-4 text-2xl font-bold">{year}</h2>
-          {postsByYear[year].map((post: any) => (
-            <PostList
-              post={post}
-              lang={lang}
-              dateFormat="MM-DD"
-              dateWidth="w-20"
-            />
-          ))}
-        </div>
-      ))
-    }
-  </div>
+<MainLayout
+  title={pageMeta.archive.title}
+  description={pageMeta.archive.description}
+  ogImage={pageMeta.archive.ogImage}
+>
+  {
+    years.map((year) => (
+      <div class="year-group my-8">
+        <h2 class="my-4 text-2xl font-bold">{year}</h2>
+        {postsByYear[year].map((post: any) => (
+          <PostList
+            post={post}
+            lang={lang}
+            dateFormat="MM-DD"
+            dateWidth="w-20"
+          />
+        ))}
+      </div>
+    ))
+  }
 </MainLayout>
