@@ -6,6 +6,12 @@ export const links = [
     avatar: "https://assets.guoqi.dev/images/diygod.gif",
   },
   {
+    name: "Randy",
+    link: "https://lutaonan.com",
+    description: "好编程，阅读，音乐，写作以及一切创造类活动。",
+    avatar: "https://assets.guoqi.dev/images/randy.jpg",
+  },
+  {
     name: "Simon He",
     link: "https://simonhe.me",
     description: "core member of unocss and vue vine, webview-use author",
@@ -18,22 +24,10 @@ export const links = [
     avatar: "https://assets.guoqi.dev/images/kaiyi.webp",
   },
   {
-    name: "张洪 Heo",
-    link: "https://blog.zhheo.com",
-    description: "分享设计与科技生活～",
-    avatar: "https://assets.guoqi.dev/images/zhheo.webp",
-  },
-  {
     name: "liruifengv",
     link: "https://liruifengv.com",
     description: "Web 开发者，Astro 项目成员，开源爱好者。",
     avatar: "https://assets.guoqi.dev/images/liruifeng.webp",
-  },
-  {
-    name: "小胡",
-    link: "https://yinji.org",
-    description: "Live a life you will remember.",
-    avatar: "https://assets.guoqi.dev/images/yinji.png",
   },
   {
     name: "Cali",
@@ -46,5 +40,35 @@ export const links = [
     link: "https://guoxiaoli.com",
     description: "90 后，定居北京，有俩个儿子",
     avatar: "https://assets.guoqi.dev/images/guoxiaoli.jpg",
+  },
+  {
+    name: "Akilar",
+    link: "https://akilar.top",
+    description: "Akilar 的糖果屋",
+    avatar: "https://assets.guoqi.dev/images/akilar.webp",
+  },
+  {
+    name: "Airbo",
+    link: "https://www.airbozh.cn/me",
+    description: "Stay Hungry, Stay Foolish",
+    avatar: "https://assets.guoqi.dev/images/airbo.webp",
+  },
+  {
+    name: "Timothy Lau",
+    link: "https://timlau.me",
+    description: "Full Stack Developer / Part-time Open Sourceror",
+    avatar: "https://assets.guoqi.dev/images/timlau.jpg",
+  },
+  {
+    name: "张洪 Heo",
+    link: "https://blog.zhheo.com",
+    description: "分享设计与科技生活～",
+    avatar: "https://assets.guoqi.dev/images/zhheo.webp",
+  },
+  {
+    name: "小胡",
+    link: "https://yinji.org",
+    description: "Live a life you will remember.",
+    avatar: "https://assets.guoqi.dev/images/yinji.png",
   },
 ]
