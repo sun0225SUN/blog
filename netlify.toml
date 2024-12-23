@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "https://blog.guoqi.dev/*"
-  to = "https://blog.sunguoqi.com/*"
+  from = "https://blog.guoqi.dev"
+  to = "https://blog.sunguoqi.com/"
   force = true
