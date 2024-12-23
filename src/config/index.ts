@@ -39,7 +39,7 @@ export const common = {
     enabled: true,
     twikoo: {
       enabled: true,
-      envId: "https://twikoo.guoqi.dev",
+      envId: import.meta.env.PUBLIC_TWIKOO_ENV_ID ?? "",
     },
   },
 }
