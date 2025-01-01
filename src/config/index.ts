@@ -39,6 +39,7 @@ export const common = {
     enabled: true,
     twikoo: {
       enabled: true,
+      // replace with your own envId
       envId: import.meta.env.PUBLIC_TWIKOO_ENV_ID ?? "",
     },
   },
