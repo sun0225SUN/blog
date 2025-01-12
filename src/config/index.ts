@@ -3,10 +3,10 @@ import { Github, Twitter } from "lucide-react"
 export const defaultLanguage: string = "zh"
 
 export const common = {
-  domain: "https://astro-air.guoqi.dev",
+  domain: "https://blog.guoqi.dev",
   meta: {
     favicon: "/favicon.ico",
-    url: "https://blog.sunguoqi.com",
+    url: "https://blog.guoqi.dev",
   },
   googleAnalyticsId: "G-W37MQ05DRE",
   social: [

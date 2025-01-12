@@ -5,14 +5,13 @@ import tailwind from "@astrojs/tailwind"
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import expressiveCode from "astro-expressive-code"
-import { defineConfig } from "astro/config"
-
 import robotsTxt from "astro-robots-txt"
+import { defineConfig } from "astro/config"
 
 // https://astro.build/config
 export default defineConfig({
   output: "static",
-  site: "https://blog.sunguoqi.com",
+  site: "https://blog.guoqi.dev",
   vite: {
     worker: {
       plugins: () => [],
