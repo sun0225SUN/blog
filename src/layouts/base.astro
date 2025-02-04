@@ -1,10 +1,10 @@
 ---
 import "~/styles/globals.css"
-import { NoiseBackground } from "~/components/react/noise-background"
-import { getLangFromUrl } from "~/i18n/utils"
-import { GoogleAnalytics } from "astro-google-analytics"
 import { ClientRouter } from "astro:transitions"
+import { GoogleAnalytics } from "astro-google-analytics"
+import { NoiseBackground } from "~/components/react/noise-background"
 import { en, zh } from "~/config"
+import { getLangFromUrl } from "~/i18n/utils"
 
 const lang = getLangFromUrl(Astro.url)
 
@@ -80,7 +80,6 @@ const config = lang === "zh" ? zh : en
 
     <script
       is:inline
-      defer
       src="https://umami.guoqi.dev/script.js"
       data-website-id="d0a0e127-4830-4afb-bedf-3bdc856c0d94"
       data-domains="blog.guoqi.dev"></script>
@@ -92,10 +91,10 @@ const config = lang === "zh" ? zh : en
     }
     <ClientRouter />
   </head>
-  <body
-    class="flex min-h-screen w-full justify-center px-6 dark:bg-[#121212] dark:text-white md:px-0"
-  >
-    <slot />
-    <NoiseBackground />
-  </body>
 </html>
+<body
+  class="flex min-h-screen w-full justify-center px-6 dark:bg-[#121212] dark:text-white md:px-0"
+>
+  <slot />
+  <NoiseBackground />
+</body>

@@ -1,3 +1,15 @@
-article li::marker {
-  @apply text-black dark:text-white !important;
+article code {
+  border-radius: 0.25rem;
+  background-color: rgba(249, 115, 22, 0.5);
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.dark article code {
+  background-color: rgba(249, 115, 22, 0.8);
+}
+
+article code::before,
+article code::after {
+  content: none !important;
 }
