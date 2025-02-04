@@ -1,10 +1,11 @@
 ---
 import "~/styles/globals.css"
-import { ClientRouter } from "astro:transitions"
-import { GoogleAnalytics } from "astro-google-analytics"
+import "~/styles/view-transition.css"
 import { NoiseBackground } from "~/components/react/noise-background"
-import { en, zh } from "~/config"
 import { getLangFromUrl } from "~/i18n/utils"
+import { GoogleAnalytics } from "astro-google-analytics"
+import { en, zh } from "~/config"
+import { ClientRouter } from "astro:transitions"
 
 const lang = getLangFromUrl(Astro.url)
 
