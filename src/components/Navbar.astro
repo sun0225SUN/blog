@@ -27,11 +27,25 @@ const navItems = [
     className: getNavItemClass(isTagActive),
   },
   {
+    href: 'https://camlife.app',
+    label: currentUI.camlife,
+    className: getNavItemClass(false),
+  },
+  {
+    href: 'https://cyc.guoqi.dev',
+    label: currentUI.cycling,
+    className: getNavItemClass(false),
+  },
+  {
     href: '/about/',
     label: currentUI.about,
     className: getNavItemClass(isAboutActive),
   },
 ]
+
+function isUrl(uri: string): boolean {
+  return uri.startsWith('http')
+}
 ---
 
 <nav
@@ -46,8 +60,9 @@ const navItems = [
     {navItems.map(item => (
       <li>
         <a
-          href={getLocalizedPath(item.href)}
+          href={isUrl(item.href) ? item.href : getLocalizedPath(item.href)}
           class={item.className}
+          target={isUrl(item.href) ? '_blank' : '_self'}
         >
           {item.label}
         </a>
