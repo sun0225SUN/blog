@@ -45,7 +45,7 @@ export const themeConfig: ThemeConfig = {
       // secondary color
       secondary: 'oklch(77% 0.005 298)',
       // background color
-      background: 'oklch(22% 0.005 298)',
+      background: 'oklch(0 0 1)',
       // highlight color
       highlight: 'oklch(0.93 0.195089 103.2532 / 0.2)', // rgba(255,235,0,0.2)
     },
