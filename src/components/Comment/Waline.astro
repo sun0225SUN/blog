@@ -1,0 +1,125 @@
+---
+import walineJS from '@waline/client/full?url'
+import walineCSS from '@waline/client/style?url'
+import { defaultLocale, themeConfig } from '@/config'
+import { walineLocaleMap } from '@/i18n/config'
+
+const {
+  serverURL = '',
+  emoji = [],
+  search = false,
+  imageUploader = false,
+} = themeConfig.comment?.waline ?? {}
+---
+
+<div id="waline" class="no-heti mt-16" />
+
+<!-- Waline Script >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<script
+  is:inline
+  define:vars={{
+    serverURL,
+    emoji,
+    search,
+    imageUploader,
+    walineLocaleMap,
+    defaultLocale,
+    walineJS,
+    walineCSS,
+  }}
+  type="module"
+>
+let walineObserver = null
+
+async function setupWaline() {
+  const { init } = await import(walineJS)
+
+  const lang = Object.keys(walineLocaleMap).find(code =>
+    window.location.pathname.startsWith(`/${code}/`),
+  ) ?? defaultLocale
+  const walineLang = walineLocaleMap[lang]
+
+  init({
+    el: '#waline',
+    serverURL,
+    path: window.location.pathname.replace(/^\/([a-z]{2}(-[a-z]{2})?)\//, '/'), // Share comments on posts in different languages
+    lang: walineLang,
+    emoji,
+    dark: 'html.dark',
+    requiredMeta: ['nick', 'mail'],
+    highlighter: false,
+    texRenderer: false,
+    imageUploader,
+    search,
+    noCopyright: true,
+    reaction: [],
+  })
+}
+
+function cleanupWalineObserver() {
+  walineObserver?.disconnect()
+  walineObserver = null
+}
+
+// Create an intersection observer to lazy load Waline comments when the container enters viewport
+function lazySetupWaline() {
+  // Cleanup Waline observer if exists
+  cleanupWalineObserver()
+
+  const walineContainer = document.getElementById('waline')
+  if (!walineContainer) {
+    return
+  }
+
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = walineCSS
+  document.head.appendChild(link)
+
+  walineObserver = new IntersectionObserver((entries) => {
+    if (entries.some(entry => entry.isIntersecting)) {
+      setupWaline()
+      walineObserver?.disconnect()
+    }
+  }, { rootMargin: '500px' })
+
+  walineObserver.observe(walineContainer)
+}
+
+document.addEventListener('astro:page-load', lazySetupWaline)
+document.addEventListener('astro:before-swap', cleanupWalineObserver)
+lazySetupWaline()
+</script>
+
+<!-- Official CSS Variables >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<style>
+#waline {
+  /* Regular Colors */
+  --waline-white: oklch(var(--un-preset-theme-colors-background));
+  --waline-light-grey: oklch(var(--un-preset-theme-colors-primary) / 0.25);
+  --waline-dark-grey: oklch(var(--un-preset-theme-colors-secondary));
+
+  /* Theme Colors */
+  --waline-theme-color: oklch(var(--un-preset-theme-colors-primary));
+  --waline-active-color: oklch(var(--un-preset-theme-colors-primary));
+
+  /* Layout Colors */
+  --waline-color: oklch(var(--un-preset-theme-colors-secondary));
+  --waline-bg-color: oklch(var(--un-preset-theme-colors-background));
+  --waline-bg-color-light: oklch(var(--un-preset-theme-colors-background));
+  --waline-bg-color-hover: oklch(var(--un-preset-theme-colors-background));
+  --waline-border-color: oklch(var(--un-preset-theme-colors-primary) / 0.25);
+  --waline-disable-bg-color: oklch(var(--un-preset-theme-colors-secondary) / 0.05);
+  --waline-disable-color: oklch(var(--un-preset-theme-colors-primary));
+
+  /* Special Colors */
+  --waline-bq-color: oklch(var(--un-preset-theme-colors-primary) / 0.25);
+
+  /* Information */
+  --waline-info-bg-color: oklch(var(--un-preset-theme-colors-background));
+  --waline-info-color: oklch(var(--un-preset-theme-colors-primary) / 0.25);
+
+  /* Rendering Options */
+  --waline-avatar-radius: 0.5rem;
+}
+</style>

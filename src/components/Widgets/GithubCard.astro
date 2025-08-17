@@ -1,0 +1,81 @@
+<script>
+async function loadRepoData(card: HTMLElement) {
+  const repo = card.dataset.repo
+  if (!repo) {
+    return
+  }
+
+  const avatar = card.getElementsByClassName('gc-owner-avatar')[0] as HTMLElement
+  const desc = card.getElementsByClassName('gc-repo-description')[0] as HTMLElement
+  const stars = card.getElementsByClassName('gc-stars-count')[0] as HTMLElement
+  const forks = card.getElementsByClassName('gc-forks-count')[0] as HTMLElement
+  const license = card.getElementsByClassName('gc-license-info')[0] as HTMLElement
+
+  function updateCardUI(data: any) {
+    const numberFormat = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 })
+
+    if (avatar && data.owner?.avatar_url) {
+      avatar.style.backgroundImage = `url(${data.owner.avatar_url})`
+    }
+
+    if (desc) {
+      desc.textContent = data.description ?? 'No description'
+    }
+
+    if (stars) {
+      stars.textContent = numberFormat.format(data.stargazers_count ?? 0)
+    }
+
+    if (forks) {
+      forks.textContent = numberFormat.format(data.forks_count ?? 0)
+    }
+
+    if (license) {
+      license.textContent = data.license?.spdx_id ?? 'No License'
+    }
+  }
+
+  const cacheKey = `github-repo-${repo}`
+  const cached = sessionStorage.getItem(cacheKey)
+
+  if (!cached) {
+    try {
+      const response = await fetch(`https://api.github.com/repos/${repo}`)
+
+      if (!response.ok) {
+        if (desc) {
+          const errorMessage = response.status === 404 ? 'Repository not found' : 'Failed to load repository data'
+          desc.textContent = errorMessage
+        }
+        return
+      }
+
+      const data = await response.json()
+
+      sessionStorage.setItem(cacheKey, JSON.stringify(data))
+      updateCardUI(data)
+    }
+    catch (error) {
+      console.error(`Failed to fetch ${repo}:`, error)
+    }
+  }
+  else {
+    const data = JSON.parse(cached)
+    updateCardUI(data)
+  }
+}
+
+function setupGithubCards() {
+  const cards = document.getElementsByClassName('gc-container')
+  if (cards.length === 0) {
+    return
+  }
+
+  Array.from(cards).forEach((card) => {
+    loadRepoData(card as HTMLElement)
+  })
+}
+
+document.addEventListener('astro:page-load', setupGithubCards)
+setupGithubCards()
+</script>

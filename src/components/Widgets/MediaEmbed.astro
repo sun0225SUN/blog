@@ -1,0 +1,55 @@
+---
+import 'lite-youtube-embed/src/lite-yt-embed.css'
+---
+
+<script>
+async function setupMediaEmbeds() {
+  const youtube = document.querySelectorAll('lite-youtube')
+  const tweets = document.querySelectorAll('.twitter-tweet')
+
+  if (youtube.length === 0 && tweets.length === 0) {
+    return
+  }
+
+  if (youtube.length > 0) {
+    try {
+      // @ts-expect-error - No type definitions available for lite-youtube-embed
+      await import('lite-youtube-embed')
+    }
+    catch (error) {
+      console.error('Failed to load YouTube embed:', error)
+    }
+  }
+
+  if (tweets.length > 0) {
+    const isDark = document.documentElement.classList.contains('dark')
+    tweets.forEach((tweet) => {
+      tweet.setAttribute('data-theme', isDark ? 'dark' : 'light')
+    })
+
+    const script = document.createElement('script')
+    script.src = 'https://platform.twitter.com/widgets.js'
+    script.async = true
+    document.head.appendChild(script)
+  }
+}
+
+function handleGalleryWheel(e: WheelEvent) {
+  const container = (e.target as Element)?.closest('.gallery-container') as HTMLElement
+  if (!container) {
+    return
+  }
+
+  const previousScrollLeft = container.scrollLeft
+  container.scrollLeft += e.deltaY
+  if (container.scrollLeft === previousScrollLeft) {
+    return
+  }
+
+  e.preventDefault()
+}
+
+document.addEventListener('astro:page-load', setupMediaEmbeds)
+document.addEventListener('wheel', handleGalleryWheel, { passive: false })
+setupMediaEmbeds()
+</script>

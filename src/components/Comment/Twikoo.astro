@@ -1,0 +1,80 @@
+---
+import twikooCSS from 'twikoo/dist/twikoo.css?url'
+import twikooPath from 'twikoo/dist/twikoo.nocss.js?url' // Using twikoo.min.js causes CSS loading failure after View Transitions
+import { defaultLocale, themeConfig } from '@/config'
+import { twikooLocaleMap } from '@/i18n/config'
+
+const { envId = '' } = themeConfig.comment?.twikoo ?? {}
+---
+
+<!-- Class not working for twikoo div -->
+<div class="no-heti mt-16">
+  <div id="twikoo" />
+</div>
+
+<!-- Twikoo Script >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<script
+  is:inline
+  src={twikooPath}
+></script>
+
+<script
+  is:inline
+  define:vars={{
+    envId,
+    twikooLocaleMap,
+    defaultLocale,
+    twikooCSS,
+  }}
+>
+let twikooObserver = null
+
+function setupTwikoo() {
+  const lang = Object.keys(twikooLocaleMap).find(code =>
+    window.location.pathname.startsWith(`/${code}/`),
+  ) ?? defaultLocale
+  const twikooLang = twikooLocaleMap[lang]
+
+  twikoo.init({
+    envId,
+    el: '#twikoo',
+    // region: 'ap-shanghai', // Specify for Tencent Cloud, omit for Vercel
+    path: window.location.pathname.replace(/^\/([a-z]{2}(-[a-z]{2})?)\//, '/'), // Share comments on posts in different languages
+    lang: twikooLang,
+  })
+}
+
+function cleanupTwikooObserver() {
+  twikooObserver?.disconnect()
+  twikooObserver = null
+}
+
+// Create an intersection observer to lazy load Twikoo comments when the container enters viewport
+function lazySetupTwikoo() {
+  // Cleanup Twikoo observer if exists
+  cleanupTwikooObserver()
+
+  const twikooContainer = document.getElementById('twikoo')
+  if (!twikooContainer) {
+    return
+  }
+
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = twikooCSS
+  document.head.appendChild(link)
+
+  twikooObserver = new IntersectionObserver((entries) => {
+    if (entries.some(entry => entry.isIntersecting)) {
+      setupTwikoo()
+      twikooObserver?.disconnect()
+    }
+  }, { rootMargin: '500px' })
+
+  twikooObserver.observe(twikooContainer)
+}
+
+document.addEventListener('astro:page-load', lazySetupTwikoo)
+document.addEventListener('astro:before-swap', cleanupTwikooObserver)
+lazySetupTwikoo()
+</script>

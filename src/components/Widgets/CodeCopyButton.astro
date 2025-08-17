@@ -1,0 +1,91 @@
+<script>
+const copyIcons = {
+  copy:
+    `<svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M6.9.8v18h14.5V.8zm12.8 16h-11v-14h11z"/>
+      <path d="M4.3 21.2V5.6l-1.7.5v17.1h14.3l.6-2z"/>
+    </svg>`,
+  success:
+    `<svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="m23.1 6.4-1.3-1.3L9.4 16.6l-6.3-5.4-1.2 1.2L9.4 20z"/>
+    </svg>`,
+}
+
+// Track timeout references for each button to manage icon state transitions
+const activeTimeouts = new WeakMap<HTMLButtonElement, ReturnType<typeof setTimeout>>()
+
+// Initialize copy buttons with icons
+function setupCodeCopyButtons() {
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.code-copy-button')
+
+  if (buttons.length === 0) {
+    return
+  }
+
+  buttons.forEach((button) => {
+    button.innerHTML = copyIcons.copy
+  })
+}
+
+// Handle copy button click
+async function handleCodeCopy(button: HTMLButtonElement) {
+  // Prevent duplicate clicks while showing success state
+  if (button.classList.contains('copy-success')) {
+    return
+  }
+
+  const code = button.parentElement?.querySelector('pre code')
+  const codeText = code?.textContent ?? ''
+  if (!code || !codeText) {
+    return
+  }
+
+  try {
+    await navigator.clipboard.writeText(codeText)
+
+    // Clear existing timeout to prevent icon state conflicts on multiple clicks
+    const existingTimeout = activeTimeouts.get(button)
+    if (existingTimeout) {
+      clearTimeout(existingTimeout)
+    }
+
+    button.innerHTML = copyIcons.success
+    button.classList.add('copy-success')
+
+    // Set timeout to revert to copy icon after 1.5s
+    const timeoutId = setTimeout(() => {
+      // Skip if element removed from DOM
+      if (button.isConnected) {
+        button.innerHTML = copyIcons.copy
+        button.classList.remove('copy-success')
+        activeTimeouts.delete(button)
+      }
+    }, 1500)
+
+    activeTimeouts.set(button, timeoutId)
+  }
+  catch (error) {
+    console.error('Failed to copy code', error)
+  }
+}
+
+function handleCodeCopyClick(e: MouseEvent) {
+  const button = e.target instanceof Element && e.target.closest('.code-copy-button')
+
+  if (!button) {
+    return
+  }
+
+  handleCodeCopy(button as HTMLButtonElement)
+}
+
+document.addEventListener('astro:page-load', setupCodeCopyButtons)
+document.addEventListener('click', handleCodeCopyClick, { passive: true })
+setupCodeCopyButtons()
+</script>

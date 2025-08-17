@@ -1,0 +1,168 @@
+<script>
+const ImageZoom = {
+  overlay: document.querySelector('.zoom-overlay') as HTMLDivElement | null,
+  zoomedImg: null as HTMLImageElement | null,
+  originalImg: null as HTMLImageElement | null,
+
+  // Create overlay element
+  createOverlay() {
+    if (this.overlay && this.overlay.isConnected) {
+      return
+    }
+
+    this.overlay = document.createElement('div')
+    this.overlay.classList.add('zoom-overlay')
+    this.overlay.setAttribute('role', 'dialog')
+    this.overlay.setAttribute('aria-modal', 'true')
+    this.overlay.setAttribute('aria-label', 'Image Viewer')
+    this.overlay.setAttribute('tabindex', '-1')
+    Object.assign(this.overlay.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      zIndex: '999',
+      backgroundColor: 'oklch(var(--un-preset-theme-colors-background) / 0.95)',
+      opacity: '0',
+      transition: 'opacity 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+      cursor: 'zoom-out',
+      display: 'none',
+    })
+
+    document.body.appendChild(this.overlay)
+  },
+
+  // Zoom in the image
+  zoomImg(img: HTMLImageElement) {
+    if (!this.overlay) {
+      return
+    }
+
+    // Disable scrolling and get position
+    document.body.style.overflow = 'hidden'
+    const rect = img.getBoundingClientRect()
+    this.originalImg = img
+
+    // Create and style cloned image
+    this.zoomedImg = img.cloneNode() as HTMLImageElement
+    Object.assign(this.zoomedImg.style, {
+      position: 'fixed',
+      top: `${rect.top}px`,
+      left: `${rect.left}px`,
+      width: `${rect.width}px`,
+      height: `${rect.height}px`,
+      transition: 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+      zIndex: '1000',
+      cursor: 'zoom-out',
+    })
+
+    // Add to DOM and show
+    document.body.appendChild(this.zoomedImg)
+    this.overlay.style.display = 'block'
+    this.overlay.focus()
+
+    // Calculate scale and position
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+    const scaleFactor = window.innerWidth < 768 ? 1 : 0.8
+    const scale = Math.min(
+      (viewportWidth * scaleFactor) / rect.width,
+      (viewportHeight * scaleFactor) / rect.height,
+    )
+    const translateX = (-rect.left + (viewportWidth - rect.width) / 2) / scale
+    const translateY = (-rect.top + (viewportHeight - rect.height) / 2) / scale
+
+    // Start animation
+    requestAnimationFrame(() => {
+      if (this.overlay) {
+        this.overlay.style.opacity = '1'
+      }
+
+      if (this.zoomedImg) {
+        this.zoomedImg.style.transform = `scale(${scale}) translate3d(${translateX}px, ${translateY}px, 0)`
+      }
+    })
+  },
+
+  // Close zoomed image
+  close() {
+    if (!this.overlay || !this.zoomedImg || !this.originalImg) {
+      return
+    }
+
+    // Reset transform and start closing animation
+    this.zoomedImg.style.transform = ''
+    this.overlay.style.opacity = '0'
+    document.body.style.overflow = ''
+
+    // Clean up after animation completes
+    setTimeout(() => {
+      // Remove zoomed image
+      if (this.zoomedImg && this.zoomedImg.parentNode) {
+        document.body.removeChild(this.zoomedImg)
+      }
+      this.zoomedImg = null
+
+      // Hide overlay
+      if (this.overlay) {
+        this.overlay.style.display = 'none'
+      }
+
+      // Restore original image and focus
+      if (this.originalImg) {
+        this.originalImg.focus()
+      }
+      this.originalImg = null
+    }, 300)
+  },
+
+  // Setup Overlay after page load
+  setupOverlay() {
+    this.createOverlay()
+    this.zoomedImg = null
+    this.originalImg = null
+  },
+
+  // Handle click events
+  handleClick(event: MouseEvent) {
+    if (this.zoomedImg) {
+      this.close()
+      return
+    }
+
+    const target = event.target
+    if (!(target instanceof HTMLImageElement)) {
+      return
+    }
+
+    // Check if image is larger than 200x200px
+    if (!(target.complete && target.naturalWidth >= 200 && target.naturalHeight >= 200)) {
+      return
+    }
+
+    // event.preventDefault()
+    this.zoomImg(target)
+  },
+
+  // Handle resize events
+  handleResize() {
+    if (!this.zoomedImg) {
+      return
+    }
+
+    this.close()
+  },
+
+  // Initialize the ImageZoom
+  init() {
+    this.createOverlay()
+
+    document.addEventListener('astro:page-load', () => this.setupOverlay())
+    document.addEventListener('click', event => this.handleClick(event), { passive: true })
+    window.addEventListener('resize', () => this.handleResize(), { passive: true })
+  },
+}
+
+ImageZoom.init()
+</script>

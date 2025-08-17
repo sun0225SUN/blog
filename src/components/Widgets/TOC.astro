@@ -1,0 +1,283 @@
+---
+import type { MarkdownHeading } from 'astro'
+import TocIcon from '@/assets/icons/toc-icon.svg'
+import { ui } from '@/i18n/ui'
+import { getPageInfo } from '@/utils/page'
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { currentLang } = getPageInfo(Astro.url.pathname)
+const currentUI = ui[currentLang as keyof typeof ui] ?? {}
+
+const { headings = [] } = Astro.props
+const filteredHeadings = headings.filter(heading =>
+  heading.depth >= 2
+  && heading.depth <= 4,
+)
+---
+
+{filteredHeadings.length > 0 && (
+  // TOC Container
+  <div
+    id="toc-container"
+    class="mb-6 uno-round-border bg-secondary/5 2xl:(fixed left-0 top-44.5 max-w-[min(calc(50vw-38rem),13rem)] border-none bg-secondary/0)"
+  >
+    {/* Hidden Checkbox */}
+    <input
+      type="checkbox"
+      id="toc-toggle"
+      hidden
+    />
+    {/* TOC Toggle */}
+    <div class="relative h-12 w-full">
+      <label
+        for="toc-toggle"
+        class="absolute inset-0 flex cursor-pointer items-center 2xl:(static flex c-secondary/40 transition-colors ease-out hover:c-secondary/80)"
+      >
+        {/* Title on Mobile */}
+        <span id="toc-mobile-text">
+          {currentUI.toc}
+        </span>
+
+        {/* Icon on Desktop */}
+        <TocIcon
+          id="toc-desktop-icon"
+          aria-hidden="true"
+          class="ml-4 hidden aspect-square w-4.2 2xl:(mt-4 block origin-center active:scale-90!)"
+          fill="currentColor"
+        />
+      </label>
+    </div>
+
+    {/* Expandable Content Wrapper with Accordion Animation */}
+    <div id="toc-accordion-wrapper">
+      <nav
+        id="toc-accordion-content"
+        aria-label="Table of Contents"
+      >
+        {/* TOC List */}
+        <ul id="toc-links-list">
+          {filteredHeadings.map(heading => (
+            <li
+              class:list={{
+                'ml-0': heading.depth === 2,
+                'ml-4': heading.depth === 3,
+                'ml-8': heading.depth === 4,
+              }}
+            >
+              <a
+                href={`#${heading.slug}`}
+                class:list={[
+                  { 'no-heti toc-links-h2 highlight-hover': heading.depth === 2 },
+                  { 'no-heti toc-links-h3 highlight-hover': heading.depth === 3 },
+                  { 'no-heti toc-links-h4 highlight-hover': heading.depth === 4 },
+                ]}
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+)}
+
+<!-- Override heti default styles  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<style>
+#toc-mobile-text {
+  --at-apply: 'ml-4 font-semibold 2xl:hidden';
+}
+#toc-links-list {
+  --at-apply: 'mb-2.5 mt-1 list-none pl-0 2xl:(mb-1 space-y-1) space-y-1.1';
+}
+.toc-links-h2, .toc-links-h3, .toc-links-h4 {
+  --at-apply: 'text-balance text-sm font-normal no-underline after:bottom-0.15em 2xl:(text-3.2 c-secondary/25)';
+  transition: color 0.15s ease-out, font-weight 0.15s ease-out;
+}
+.toc-link-active {
+  --at-apply: 'c-secondary/80 font-medium';
+}
+
+/* Hover Effect */
+#toc-container:hover :is(.toc-links-h2, .toc-links-h3, .toc-links-h4) {
+  --at-apply: '2xl:(c-secondary/60 hover:c-primary) hover:(c-secondary font-medium)';
+}
+#toc-container:hover .toc-link-active {
+  --at-apply: '2xl:c-primary';
+}
+
+/* Overflow and Scrollbar */
+#toc-toggle:checked ~ #toc-accordion-wrapper #toc-accordion-content {
+  --at-apply: 'overflow-y-auto 2xl:overflow-hidden';
+}
+#toc-accordion-content {
+  --at-apply: 'max-h-59.3 overflow-hidden pl-4 pr-6 2xl:(max-h-[calc(100vh-26.75rem)] overflow-y-auto scrollbar-hidden)';
+  scrollbar-width: thin;
+  scrollbar-color: oklch(var(--un-preset-theme-colors-secondary) / 0.15) transparent;
+}
+#toc-accordion-content::-webkit-scrollbar {
+  --at-apply: 'hidden';
+}
+
+/* Mobile Initial State */
+#toc-accordion-wrapper {
+  --at-apply: 'grid rows-[0fr]';
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+#toc-toggle:checked ~ #toc-accordion-wrapper {
+  --at-apply: 'rows-[1fr]';
+}
+
+/* Desktop Initial State */
+#toc-accordion-wrapper {
+  --at-apply: '2xl:rows-[1fr]';
+}
+#toc-toggle:checked ~ #toc-accordion-wrapper {
+  --at-apply: '2xl:rows-[0fr]';
+}
+</style>
+
+<!-- TOC Highlight Script >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<script>
+let headingObserver: IntersectionObserver | null = null
+let contentEndObserver: IntersectionObserver | null = null
+
+function setupTOCHighlight() {
+  const is2xl = window.innerWidth >= 1536
+  if (!is2xl) {
+    return
+  }
+
+  const tocContent = document.getElementById('toc-accordion-content')
+  if (!tocContent) {
+    return
+  }
+
+  const tocLinksCollection = tocContent.getElementsByTagName('a')
+  if (tocLinksCollection.length === 0) {
+    return
+  }
+
+  const tocLinks = Array.from(tocLinksCollection, item => item as HTMLAnchorElement)
+
+  // Determine the top level heading class
+  const hasH2Headings = tocLinks.some(linkItem => linkItem.classList.contains('toc-links-h2'))
+  const topLevelClass = hasH2Headings ? 'toc-links-h2' : 'toc-links-h3'
+
+  // Build the heading map with the forEach approach
+  const headingMap = new Map<string, HTMLAnchorElement>()
+  tocLinks.forEach((link) => {
+    const id = link.getAttribute('href')?.substring(1)
+    if (id) {
+      headingMap.set(id, link)
+    }
+  })
+
+  let activeLink: HTMLAnchorElement | null = null
+
+  // Find and highlight the nearest parent heading
+  function highlightParentLink(childLink: HTMLAnchorElement) {
+    const currentIndex = tocLinks.indexOf(childLink)
+    for (let i = currentIndex - 1; i >= 0; i--) {
+      const linkItem = tocLinks[i]
+      if (linkItem.classList.contains(topLevelClass)) {
+        linkItem.classList.add('toc-link-active')
+        break
+      }
+    }
+  }
+
+  function highlightLink(link: HTMLAnchorElement) {
+    if (link === activeLink) {
+      return
+    }
+
+    // Clear all highlights
+    tocLinks.forEach((linkItem) => {
+      linkItem.classList.remove('toc-link-active')
+    })
+
+    // Highlight current link
+    link.classList.add('toc-link-active')
+
+    // If not a top level heading, find and highlight the parent heading
+    if (!link.classList.contains(topLevelClass)) {
+      highlightParentLink(link)
+    }
+
+    activeLink = link
+
+    // Scroll to center position
+    link.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+    })
+  }
+
+  // Create observer to monitor headings
+  headingObserver = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      const headingId = entries.find(entry => entry.isIntersecting)?.target?.id
+      if (headingId) {
+        const link = headingMap.get(headingId)
+        if (link) {
+          highlightLink(link)
+        }
+      }
+    },
+    {
+      rootMargin: '0% 0% -66% 0%',
+      threshold: [0.4],
+    },
+  )
+
+  // Observe h2, h3, h4 heading elements
+  Array.from(document.querySelectorAll('h2, h3, h4'))
+    .filter(heading => heading.id && heading.id !== 'footnotes')
+    .forEach(heading => headingObserver?.observe(heading))
+
+  const contentEndElement = document.getElementById('post-copyright')
+  if (!contentEndElement) {
+    return
+  }
+
+  // Create observer to monitor the content end element
+  contentEndObserver = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      // Clear highlights when scrolled past content
+      if (!entries[0].isIntersecting && entries[0].boundingClientRect.top < 0) {
+        tocLinks.forEach(linkItem => linkItem.classList.remove('toc-link-active'))
+        activeLink = null
+      }
+    },
+    {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0,
+    },
+  )
+
+  // Observe the content end element
+  contentEndObserver?.observe(contentEndElement)
+
+  // Highlight the first TOC item by default
+  if (tocLinks.length > 0) {
+    highlightLink(tocLinks[0])
+  }
+}
+
+// Cleanup TOC observers if exists
+function cleanupTOCObservers() {
+  headingObserver?.disconnect()
+  contentEndObserver?.disconnect()
+  headingObserver = null
+  contentEndObserver = null
+}
+
+document.addEventListener('astro:after-swap', setupTOCHighlight)
+document.addEventListener('astro:before-swap', cleanupTOCObservers)
+setupTOCHighlight()
+</script>
+

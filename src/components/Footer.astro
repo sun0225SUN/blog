@@ -1,0 +1,47 @@
+---
+import { defaultLocale, themeConfig } from '@/config'
+import { getLangFromPath } from '@/i18n/lang'
+
+const { author } = themeConfig.site
+const { links: socialLinks, startYear } = themeConfig.footer
+
+const currentYear = new Date().getFullYear()
+const year = Number(startYear) === currentYear ? startYear : `${startYear}-${currentYear}`
+
+// i18n RSS Feed Path
+const currentLang = getLangFromPath(Astro.url.pathname)
+const links = socialLinks.map(({ name, url, ...rest }) => {
+  if (name === 'RSS') {
+    return { name, url: currentLang === defaultLocale ? url : `/${currentLang}${url}`, ...rest }
+  }
+
+  if (name === 'Email') {
+    return { name, url: url.startsWith('mailto:') ? url : `mailto:${url}`, ...rest }
+  }
+
+  return { name, url, ...rest }
+})
+
+const footerLinkClass = 'highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary'
+---
+
+<footer
+  class="text-3 leading-1.25em font-navbar lg:text-3.5"
+  lg="uno-desktop-column bottom-20"
+>
+  <p>
+    {links.map((link, index) => (
+      <>
+        <a class={footerLinkClass} href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a>&nbsp;{index < links.length - 1 && '/'}
+      </>
+    ))}
+  </p>
+
+  <p>
+    © {year} {author}
+  </p>
+
+  <p>
+    Powered by <a class={footerLinkClass} href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a> and <a class={footerLinkClass} href="https://github.com/radishzzz/astro-theme-retypeset" target="_blank" rel="noopener noreferrer">Retypeset</a>
+  </p>
+</footer>
