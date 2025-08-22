@@ -19,9 +19,9 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/partytown": "^2.1.4",
-    "@astrojs/sitemap": "^3.5.0",
+    "@astrojs/sitemap": "^3.5.1",
     "@waline/client": "^3.6.0",
-    "astro": "^5.13.2",
+    "astro": "^5.13.3",
     "astro-compress": "^2.3.8",
     "astro-og-canvas": "^0.7.0",
     "canvaskit-wasm": "^0.40.0",
