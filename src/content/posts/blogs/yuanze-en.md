@@ -1,7 +1,7 @@
 ---
 title: 'Hello, Beijing! Hello, Principle Technology! Everything is the best arrangement!'
 description: "I hope we can both do what we love without reservation and put all our passion into our careers and lives!"
-published: 2023-03-10
+published: 2024-03-10
 tags:
   - work
 lang: en

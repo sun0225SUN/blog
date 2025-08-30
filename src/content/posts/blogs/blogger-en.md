@@ -1,6 +1,6 @@
 ---
 title: About Personal Independent Blog, My Tinkering and Thoughts
-description: "In this fast-paced, fragmented era, there are still a group of people who can uphold their worship of science and technology, cherish their longing for a better life, maintain the ability to think independently, quietly settle down, quietly change, slowly grow, and silently contribute..."
+description: Maintain the ability to think independently, quietly settle, subtly change, slowly grow, and silently contribute...
 published: 2023-12-09
 tags:
   - Thinking
