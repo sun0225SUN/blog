@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content'
+import Comment from '@/components/Comment/Index.astro'
 import { defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
 
@@ -43,5 +44,6 @@ const { Content } = aboutEntry ? await render(aboutEntry) : { Content: null }
   <!-- About Page Content -->
   <div class="heti">
     {Content && <Content />}
+    <Comment />
   </div>
 </Layout>
