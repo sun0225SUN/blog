@@ -14,14 +14,6 @@ body::selection {
   --at-apply: 'bg-highlight';
 }
 
-/* Fix KaTeX Overflow with Hidden Scrollbar */
-.katex-display {
-  --at-apply: 'my-6 overflow-x-auto overflow-y-hidden scrollbar-hidden';
-}
-.katex-display::-webkit-scrollbar {
-  display: none;
-}
-
 /* Highlight Hover Animation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 .highlight-static,
 .highlight-hover {

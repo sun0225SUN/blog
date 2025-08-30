@@ -1,11 +1,15 @@
-import { moreLocales } from '@/config'
+import { base, moreLocales } from '@/config'
 import { getLangFromPath } from '@/i18n/lang'
 import { getLocalizedPath } from '@/i18n/path'
 
 // Checks if normalized path matches a specific page type
 function isPageType(path: string, prefix: string = '') {
-  // Removes leading and trailing slashes from a path
-  const normalizedPath = path.replace(/^\/|\/$/g, '')
+  const pathWithoutBase = base && path.startsWith(base)
+    ? path.slice(base.length)
+    : path
+
+  // Removes leading and trailing slashes from the path
+  const normalizedPath = pathWithoutBase.replace(/^\/|\/$/g, '')
 
   if (prefix === '') {
     return normalizedPath === '' || moreLocales.includes(normalizedPath)

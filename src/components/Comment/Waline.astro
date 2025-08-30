@@ -1,7 +1,7 @@
 ---
 import walineJS from '@waline/client/full?url'
 import walineCSS from '@waline/client/style?url'
-import { defaultLocale, themeConfig } from '@/config'
+import { allLocales, base, defaultLocale, themeConfig } from '@/config'
 import { walineLocaleMap } from '@/i18n/config'
 
 const {
@@ -18,12 +18,14 @@ const {
 <script
   is:inline
   define:vars={{
+    base,
+    defaultLocale,
+    allLocales,
     serverURL,
     emoji,
     search,
     imageUploader,
     walineLocaleMap,
-    defaultLocale,
     walineJS,
     walineCSS,
   }}
@@ -34,16 +36,25 @@ let walineObserver = null
 async function setupWaline() {
   const { init } = await import(walineJS)
 
+  const currentPath = window.location.pathname
+  const walinePath = currentPath.replace(
+    new RegExp(`\\/(${allLocales.join('|')})\\/`),
+    '/',
+  )
+
+  const pathWithoutBase = base && currentPath.startsWith(base)
+    ? currentPath.slice(base.length)
+    : currentPath
+
   const lang = Object.keys(walineLocaleMap).find(code =>
-    window.location.pathname.startsWith(`/${code}/`),
+    pathWithoutBase.startsWith(`/${code}/`),
   ) ?? defaultLocale
-  const walineLang = walineLocaleMap[lang]
 
   init({
     el: '#waline',
     serverURL,
-    path: window.location.pathname.replace(/^\/([a-z]{2}(-[a-z]{2})?)\//, '/'), // Share comments on posts in different languages
-    lang: walineLang,
+    path: walinePath, // Share comments in different languages
+    lang: walineLocaleMap[lang],
     emoji,
     dark: 'html.dark',
     requiredMeta: ['nick', 'mail'],
@@ -61,7 +72,7 @@ function cleanupWalineObserver() {
   walineObserver = null
 }
 
-// Create an intersection observer to lazy load Waline comments when the container enters viewport
+// Create an intersection observer to lazy load Waline when the container enters viewport
 function lazySetupWaline() {
   // Cleanup Waline observer if exists
   cleanupWalineObserver()

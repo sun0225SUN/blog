@@ -4,7 +4,7 @@ export const themeConfig: ThemeConfig = {
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   site: {
     // site title
-    title: '0xGuoqi',
+    title: 'Guoqi Sun',
     // site subtitle
     subtitle: 'A rational romantic.',
     // site description
@@ -15,6 +15,9 @@ export const themeConfig: ThemeConfig = {
     author: 'sun0225SUN',
     // site url
     url: 'https://guoqi.dev',
+    // base path
+    // root directory for all pages and assets
+    base: '/', // e.g., '/blog', '/docs'
     // favicon url
     // recommended formats: svg, png or ico
     favicon: 'https://files.guoqi.dev/images/favicon.ico', // or https://example.com/favicon.svg
@@ -199,6 +202,7 @@ export const themeConfig: ThemeConfig = {
 
 export default themeConfig
 
+export const base = themeConfig.site.base === '/' ? '' : themeConfig.site.base.replace(/\/$/, '')
 export const defaultLocale = themeConfig.global.locale
 export const moreLocales = themeConfig.global.moreLocales
 export const allLocales = [defaultLocale, ...moreLocales]

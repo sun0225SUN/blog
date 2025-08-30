@@ -16,7 +16,7 @@
 
 /* Headings */
 .heti :where(h1, h2, h3, h4, h5, h6) {
-  --at-apply: 'mb-4 mt-1.5em font-semibold';
+  --at-apply: 'mb-4 mt-1.5em scroll-mt-20 font-semibold';
 }
 .heti :where(h1) {
   --at-apply: 'text-7 c-primary';

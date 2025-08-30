@@ -1,4 +1,4 @@
-import { allLocales, defaultLocale, moreLocales } from '@/config'
+import { allLocales, base, defaultLocale, moreLocales } from '@/config'
 
 /**
  * Gets the language code from the current path
@@ -7,8 +7,12 @@ import { allLocales, defaultLocale, moreLocales } from '@/config'
  * @returns Language code detected from path or default locale
  */
 export function getLangFromPath(path: string) {
+  const pathWithoutBase = base && path.startsWith(base)
+    ? path.slice(base.length)
+    : path
+
   return moreLocales.find(lang =>
-    path.startsWith(`/${lang}/`)) ?? defaultLocale
+    pathWithoutBase.startsWith(`/${lang}/`)) ?? defaultLocale
 }
 
 /**

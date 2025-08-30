@@ -1,11 +1,4 @@
 {
-  "[markdown]": {
-    "editor.quickSuggestions": {
-      "comments": "on",
-      "other": "on",
-      "strings": "on"
-    }
-  },
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
@@ -54,10 +47,10 @@
     "postcss"
   ],
 
+  // Use workspace TypeScript version instead of built-in
   "typescript.tsdk": "node_modules/typescript/lib",
-  "files.associations": {
-    "*.mdx": "markdown"
-  },
+
+  // Custom dictionary words for spell checker
   "cSpell.words": [
     "abbrlink",
     "antfu",

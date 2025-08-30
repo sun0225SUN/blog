@@ -32,7 +32,7 @@ published: ${new Date().toISOString()}
 description: ''
 updated: ''
 tags:
-  - Note
+  - Tag
 draft: false
 pin: 0
 toc: ${themeConfig.global.toc}

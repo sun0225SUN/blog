@@ -8,6 +8,7 @@ import type { Buffer } from 'node:buffer'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
+// @ts-expect-error - No type definitions available
 import quantize from '@lokesh.dhakar/quantize'
 import glob from 'fast-glob'
 import { getPixels } from 'ndarray-pixels'
@@ -324,7 +325,7 @@ async function processNewImages(fileMappings: FileMapping[], stats: ImageStats, 
   console.log(`✅ Generated LQIP styles for ${stats.new} new images`)
 
   const isNewFile = Object.keys(cleanedMap).length === 0
-  await fs.writeFile(lqipMapPath, JSON.stringify(newMap, null, 2))
+  await fs.writeFile(lqipMapPath, `${JSON.stringify(newMap, null, 2)}\n`)
   console.log(`📁 LQIP mapping ${isNewFile ? 'saved to' : 'updated in'} ${lqipMapPath}`)
 
   return newMap
@@ -416,7 +417,7 @@ async function main() {
     lqipMap = cleanedMap
 
     if (Object.keys(existingMap).length > Object.keys(cleanedMap).length) {
-      await fs.writeFile(lqipMapPath, JSON.stringify(cleanedMap, null, 2))
+      await fs.writeFile(lqipMapPath, `${JSON.stringify(cleanedMap, null, 2)}\n`)
     }
   }
 

@@ -1,5 +1,5 @@
 ---
-import { defaultLocale, themeConfig } from '@/config'
+import { base, defaultLocale, themeConfig } from '@/config'
 import { giscusLocaleMap } from '@/i18n/config'
 
 const {
@@ -21,6 +21,8 @@ const {
 <script
   is:inline
   define:vars={{
+    base,
+    defaultLocale,
     repo,
     repoId,
     category,
@@ -31,28 +33,30 @@ const {
     emitMetadata,
     inputPosition,
     giscusLocaleMap,
-    defaultLocale,
   }}
 >
 function getThemeUrl() {
   const isDark = document.documentElement.classList.contains('dark')
-  const baseUrl = window.location.origin
+  const origin = window.location.origin
 
   return isDark
-    ? `${baseUrl}/giscus/theme-dark.css`
-    : `${baseUrl}/giscus/theme-light.css`
+    ? `${origin}${base}/giscus/theme-dark.css`
+    : `${origin}${base}/giscus/theme-light.css`
 }
 
 function setupGiscus() {
   const giscusContainer = document.getElementById('giscus')
   giscusContainer.innerHTML = ''
 
-  const lang = Object.keys(giscusLocaleMap).find(code =>
-    window.location.pathname.startsWith(`/${code}/`),
-  ) ?? defaultLocale
-  const giscusLang = giscusLocaleMap[lang]
+  const currentPath = window.location.pathname
+  const pathWithoutBase = base && currentPath.startsWith(base)
+    ? currentPath.slice(base.length)
+    : currentPath
 
-  // Set up basic attributes
+  const lang = Object.keys(giscusLocaleMap).find(code =>
+    pathWithoutBase.startsWith(`/${code}/`),
+  ) ?? defaultLocale
+
   const dataAttributes = {
     repo,
     repoId,
@@ -64,7 +68,7 @@ function setupGiscus() {
     emitMetadata,
     inputPosition,
     theme: getThemeUrl(),
-    lang: giscusLang,
+    lang: giscusLocaleMap[lang],
   }
 
   const script = document.createElement('script')

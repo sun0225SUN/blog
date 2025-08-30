@@ -3,35 +3,95 @@ import 'lite-youtube-embed/src/lite-yt-embed.css'
 ---
 
 <script>
-async function setupMediaEmbeds() {
+async function setupYouTubeEmbeds() {
   const youtube = document.querySelectorAll('lite-youtube')
-  const tweets = document.querySelectorAll('.twitter-tweet')
-
-  if (youtube.length === 0 && tweets.length === 0) {
+  if (youtube.length === 0) {
     return
   }
 
-  if (youtube.length > 0) {
-    try {
-      // @ts-expect-error - No type definitions available for lite-youtube-embed
-      await import('lite-youtube-embed')
-    }
-    catch (error) {
-      console.error('Failed to load YouTube embed:', error)
-    }
+  try {
+    // @ts-expect-error - No type definitions available for lite-youtube-embed
+    await import('lite-youtube-embed')
+  }
+  catch (error) {
+    console.error('Failed to load YouTube embed:', error)
+  }
+}
+
+async function setupTwitterEmbeds() {
+  const tweets = document.querySelectorAll('.twitter-tweet')
+  if (tweets.length === 0) {
+    return
   }
 
-  if (tweets.length > 0) {
-    const isDark = document.documentElement.classList.contains('dark')
-    tweets.forEach((tweet) => {
-      tweet.setAttribute('data-theme', isDark ? 'dark' : 'light')
+  tweets.forEach((tweet) => {
+    tweet.setAttribute('data-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+  })
+
+  const script = document.createElement('script')
+  script.src = 'https://platform.twitter.com/widgets.js'
+  script.async = true
+  document.head.appendChild(script)
+}
+
+async function setupMermaidEmbeds() {
+  const mermaids = document.querySelectorAll('pre.mermaid')
+  if (mermaids.length === 0) {
+    return
+  }
+
+  mermaids.forEach((element) => {
+    const mermaid = element as HTMLElement
+    if (!mermaid.dataset.mermaidCode) {
+      mermaid.dataset.mermaidCode = mermaid.textContent?.trim() ?? ''
+    }
+  })
+
+  try {
+    const { default: mermaid } = await import('mermaid')
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+    })
+    mermaid.run()
+  }
+  catch (error) {
+    console.error('Failed to load Mermaid:', error)
+  }
+}
+
+async function setupMediaEmbeds() {
+  await Promise.allSettled([
+    setupYouTubeEmbeds(),
+    setupTwitterEmbeds(),
+    setupMermaidEmbeds(),
+  ])
+}
+
+function updateMermaidTheme() {
+  const mermaids = document.querySelectorAll('pre.mermaid[data-mermaid-code]')
+  if (mermaids.length === 0) {
+    return
+  }
+
+  const isDark = document.documentElement.classList.contains('dark')
+
+  import('mermaid').then(({ default: mermaid }) => {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: isDark ? 'dark' : 'default',
     })
 
-    const script = document.createElement('script')
-    script.src = 'https://platform.twitter.com/widgets.js'
-    script.async = true
-    document.head.appendChild(script)
-  }
+    mermaids.forEach((element) => {
+      const mermaid = element as HTMLElement
+      mermaid.innerHTML = mermaid.dataset.mermaidCode ?? ''
+      mermaid.removeAttribute('data-processed')
+    })
+
+    mermaid.run()
+  }).catch((error) => {
+    console.error('Failed to update Mermaid theme:', error)
+  })
 }
 
 function handleGalleryWheel(e: WheelEvent) {
@@ -50,6 +110,7 @@ function handleGalleryWheel(e: WheelEvent) {
 }
 
 document.addEventListener('astro:page-load', setupMediaEmbeds)
+document.addEventListener('theme-changed', updateMermaidTheme)
 document.addEventListener('wheel', handleGalleryWheel, { passive: false })
 setupMediaEmbeds()
 </script>

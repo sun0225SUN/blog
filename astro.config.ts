@@ -4,11 +4,12 @@ import sitemap from '@astrojs/sitemap'
 import Compress from 'astro-compress'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
+import rehypeMermaid from 'rehype-mermaid'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive'
 import remarkMath from 'remark-math'
 import UnoCSS from 'unocss/astro'
-import { themeConfig } from './src/config'
+import { base, defaultLocale, themeConfig } from './src/config'
 import { langMap } from './src/i18n/config'
 import { rehypeCodeCopyButton } from './src/plugins/rehype-code-copy-button.mjs'
 import { rehypeExternalLinks } from './src/plugins/rehype-external-links.mjs'
@@ -18,17 +19,16 @@ import { remarkContainerDirectives } from './src/plugins/remark-container-direct
 import { remarkLeafDirectives } from './src/plugins/remark-leaf-directives.mjs'
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs'
 
-const siteUrl = themeConfig.site.url
-const defaultLocale = themeConfig.global.locale
-const imageHostURL = themeConfig.preload?.imageHostURL
+const { url: site } = themeConfig.site
+const { imageHostURL } = themeConfig.preload ?? {}
 const imageConfig = imageHostURL
   ? { image: { domains: [imageHostURL], remotePatterns: [{ protocol: 'https' }] } }
   : {}
 
 export default defineConfig({
-  site: siteUrl,
-  base: '/',
-  trailingSlash: 'always',
+  site,
+  base,
+  trailingSlash: 'always', // Not recommended to change
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport', // hover, tap, viewport, load
@@ -70,12 +70,17 @@ export default defineConfig({
     ],
     rehypePlugins: [
       rehypeKatex,
+      [rehypeMermaid, { strategy: 'pre-mermaid' }],
       rehypeSlug,
       rehypeHeadingAnchor,
       rehypeImageProcessor,
       rehypeExternalLinks,
       rehypeCodeCopyButton,
     ],
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid'],
+    },
     shikiConfig: {
       // Available themes: https://shiki.style/themes
       themes: {
@@ -83,6 +88,20 @@ export default defineConfig({
         dark: 'github-dark',
       },
     },
+  },
+  vite: {
+    plugins: [
+      {
+        name: 'prefix-font-urls-with-base',
+        transform(code, id) {
+          if (!id.endsWith('src/styles/font.css')) {
+            return null
+          }
+
+          return code.replace(/url\("\/fonts\//g, `url("${base}/fonts/`)
+        },
+      },
+    ],
   },
   devToolbar: {
     enabled: false,

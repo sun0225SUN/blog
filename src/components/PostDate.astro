@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { date, updatedDate, minutes } = Astro.props
-const format = themeConfig.global.dateFormat
+const { dateFormat: format } = themeConfig.global
 const isPost = isPostPage(Astro.url.pathname)
 const timeSpacingClass = isPost ? 'ml-1.75' : 'ml-1.5'
 

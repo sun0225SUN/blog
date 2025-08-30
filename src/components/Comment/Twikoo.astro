@@ -1,7 +1,7 @@
 ---
 import twikooCSS from 'twikoo/dist/twikoo.css?url'
 import twikooPath from 'twikoo/dist/twikoo.nocss.js?url' // Using twikoo.min.js causes CSS loading failure after View Transitions
-import { defaultLocale, themeConfig } from '@/config'
+import { allLocales, base, defaultLocale, themeConfig } from '@/config'
 import { twikooLocaleMap } from '@/i18n/config'
 
 const { envId = '' } = themeConfig.comment?.twikoo ?? {}
@@ -21,26 +21,37 @@ const { envId = '' } = themeConfig.comment?.twikoo ?? {}
 <script
   is:inline
   define:vars={{
+    allLocales,
+    base,
+    defaultLocale,
     envId,
     twikooLocaleMap,
-    defaultLocale,
     twikooCSS,
   }}
 >
 let twikooObserver = null
 
 function setupTwikoo() {
+  const currentPath = window.location.pathname
+  const twikooPath = currentPath.replace(
+    new RegExp(`\\/(${allLocales.join('|')})\\/`),
+    '/',
+  )
+
+  const pathWithoutBase = base && currentPath.startsWith(base)
+    ? currentPath.slice(base.length)
+    : currentPath
+
   const lang = Object.keys(twikooLocaleMap).find(code =>
-    window.location.pathname.startsWith(`/${code}/`),
+    pathWithoutBase.startsWith(`/${code}/`),
   ) ?? defaultLocale
-  const twikooLang = twikooLocaleMap[lang]
 
   twikoo.init({
     envId,
     el: '#twikoo',
     // region: 'ap-shanghai', // Specify for Tencent Cloud, omit for Vercel
-    path: window.location.pathname.replace(/^\/([a-z]{2}(-[a-z]{2})?)\//, '/'), // Share comments on posts in different languages
-    lang: twikooLang,
+    path: twikooPath, // Share comments in different languages
+    lang: twikooLocaleMap[lang],
   })
 }
 
@@ -49,7 +60,7 @@ function cleanupTwikooObserver() {
   twikooObserver = null
 }
 
-// Create an intersection observer to lazy load Twikoo comments when the container enters viewport
+// Create an intersection observer to lazy load Twikoo when the container enters viewport
 function lazySetupTwikoo() {
   // Cleanup Twikoo observer if exists
   cleanupTwikooObserver()

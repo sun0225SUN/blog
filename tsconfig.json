@@ -1,18 +1,13 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
     "allowJs": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.astro",
-    "uno.config.ts",
-    "astro.config.ts"
-  ],
+  "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]
 }

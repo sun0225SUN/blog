@@ -10,6 +10,7 @@ export interface ThemeConfig {
     i18nTitle: boolean
     author: string
     url: string
+    base: string
     favicon: string
   }
   color: {
