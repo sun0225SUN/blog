@@ -2,145 +2,108 @@
 title: About Personal Independent Blog, My Tinkering and Thoughts
 description: Maintain the ability to think independently, quietly settle, subtly change, slowly grow, and silently contribute...
 published: 2023-12-09
+updated: 2025-08-31
 tags:
   - Thinking
 lang: en
 abbrlink: blogger
 ---
 
-> I am a blogger, recording bits of growth and leaving some logs in the long river of life.
+When I first started learning programming, I had a strong desire to write a blog. In summary, there were several reasons:
 
-When I first started programming, I had a strong desire to write blogs. Summarizing it, there are several reasons.
-
-- Once you enter the deep sea of programming, you always want to record what you have learned.
-- A good memory is not as good as a bad pen. The knowledge learned yesterday may be forgotten in a few days. Blog == log, it can make my "tinkering" traceable.
-- When looking up information online and seeing other people's articles, my inner OS: What is this? If it were me, I would definitely write better.
+- Once you dive into programming, it's a deep ocean. Whenever I learned something new, I wanted to record it.
+- A good memory is not as reliable as a written note. What I learned yesterday might be forgotten in a few days. A blog is like a log; it allows my "tinkering" to be traceable.
+- When searching for information online, I saw articles written by others. My inner OS: What is this? If it were me, I could definitely write it better.
 
 ## My Blog Tinkering History
 
-At first, I tried writing blogs on CSDN, gaining a lot of readers and followers, and feeling a sense of accomplishment (CSDN has now stopped updating, and I plan to switch to Juejin).
+At first, I tried blogging on CSDN, gaining many readers and followers, which gave me a great sense of achievement.
 
-<img src="https://assets.guoqi.dev/images/202312091523941.webp"/>
-<img src="https://assets.guoqi.dev/images/202312091524346.webp"/>
-<img src="https://assets.guoqi.dev/images/202312091525477.webp"/>
-<img src="https://assets.guoqi.dev/images/202312091525448.webp"/>
+Later, I started tinkering with a personal blog. With zero experience, I spent a few days building a static blog site based on Hexo + Github. After some heavy customization, it ended up looking like this:
 
-Later, I started tinkering with personal blogs. With zero foundation, I spent a few days building a static blog site based on Hexo + Github.
+![](https://files.guoqi.dev/images/20250831222254822.webp)
 
-After some modifications, it finally turned into the following appearance (kept as a backup for remembrance, now abandoned).
+During my postgraduate exam preparation, academic pressure was high, so I didn't have much energy to manage the blog. After graduation, I planned to start over.
 
-https://gh.sunguoqi.com
+Since I had already tinkered with static blog frameworks, why not try a dynamic blog framework?
 
-<img src="https://assets.guoqi.dev/images/202312091526623.webp"/>
-<img src="https://assets.guoqi.dev/images/202312091527369.webp"/>
+After a short period of exploration, I finally chose the Halo framework.
 
-During the preparation for the postgraduate entrance examination, the academic pressure was heavy, so I didn't have much time to manage the blog. After graduation, I plan to start over.
+Halo official site: https://halo.run
 
-Since I have already tinkered with the static blog framework, why not try the dynamic blog framework?
+Halo is indeed powerful, and it's free and open source. It has received 29.6k stars on GitHub (as of the date of this post). I recommend it to everyone.
 
-After a short period of exploration, I finally chose to use the Halo framework.
+::github{repo="halo-dev/halo"}
 
-Halo framework official website: https://halo.run
+![](https://files.guoqi.dev/images/20250831222310026.webp)
 
-<img src="https://assets.guoqi.dev/images/202312091527843.webp"/>
+But... although... however... emm... just last month, I returned to the Hexo framework camp.
 
-Halo is indeed very powerful, and it is free and open-source. It has received 29.6k stars on GitHub (data as of the publication date of this article), and I recommend everyone to use it.
+::github{repo="anzhiyu-c/hexo-theme-anzhiyu"}
 
-https://github.com/halo-dev/halo
-
-<img src="https://assets.guoqi.dev/images/202312110346954.webp"/>
-
-However... although... but... emm... just last month, I returned to the Hexo framework camp.
-
-Hexo framework, Anzhiyu theme project address:
-
-https://github.com/anzhiyu-c/hexo-theme-anzhiyu
-
-<img src="https://assets.guoqi.dev/images/202312091528611.webp"/>
+![](https://files.guoqi.dev/images/20250831222338174.webp)
 
 ## What Blogging Has Brought Me
 
 ### Passion
 
-There is a very contrasting phenomenon in the blog circle:
+There's a very interesting phenomenon in the blogging community:
 
-The sites of the big guys are often very simple, and the content is very valuable. Most newbies, on the other hand, are more obsessed with spending a lot of time tinkering with the functions and styles of the site, and the blog content often contains a lot of water.
+The sites of experts are often very simple, with high-quality content. Most newcomers, however, are more obsessed with spending a lot of time tinkering with website features and styles, and their blog content is often filled with fluff.
 
-<img src="https://assets.guoqi.dev/images/202312091541457.webp"/>
+I think this is normal; I was the same when I started blogging.
 
-I think this phenomenon is very normal. I was the same when I first started blogging.
+The production of knowledge is not a momentary burst, but requires long-term accumulation. Careful polishing of the non-content parts of the site can also motivate bloggers to produce high-quality content. "External beauty" and "internal beauty" are equally important.
 
-The output of knowledge is not a momentary burst but requires long-term accumulation. The meticulous polishing of the non-content parts of the website can better promote the blogger to produce high-quality content. "External beauty" and "internal beauty" are equally important.
-
-Tinkering is for better output. Modifying the website and tinkering with functions increased my passion for technology.
-
----
+Tinkering is for better output. Customizing the site and adding features increased my passion for technology.
 
 ### Social
 
-When I first started tinkering with blogs, I only referred to official documents and modification tutorials. Later, I tried to join some chat groups, and the gears of fate began to turn...
+When I first started tinkering with my blog, I only referred to official documentation and customization tutorials. Later, I tried joining some chat groups, and the gears of fate began to turn...
 
-When you encounter a bug, you can seek help in the group, and enthusiastic big guys will help you solve the problem. When you face choices, group friends will give you some constructive suggestions. In daily group chats, besides killing time, you can also learn some new things and break through the information cocoon (specifically high-quality group chats).
+When you encounter a bug, you can seek help in the group, and kind experts will help you solve the problem. When facing choices, group members will offer constructive suggestions. Besides killing boredom, you can also learn new things and break out of your information bubble (especially in high-quality group chats).
 
-There was a time when "Akilar's Candy House" was a group chat I had to participate in every day. In it, I made many friends and met many big guys.
+For a while, "[Akilar's Candy House](https://akilar.top)" was a group chat I visited daily. There, I made many friends and met many experts.
 
-The store manager's blog: https://akilar.top
+### Accumulation
 
-<img src="https://assets.guoqi.dev/images/202312091542346.webp" />
+When I was in school, I didn't have the habit of taking notes, and even disliked it. I felt it was a waste of time, and paper notes were inconvenient to modify, polish, and format (mainly in high school; in college, I tried and heavily used some electronic note-taking products).
 
----
+But blogging is completely different. You can freely edit, polish, and beautify the layout (most importantly, you don't have to worry about ugly handwriting).
 
-### Precipitation
+Of course, producing a truly "content-rich" article is not easy; it requires a lot of time and effort from the author. But precisely because of this, what is finally accumulated is more valuable.
 
-When I was in school, I didn't have the habit of taking notes, and I even hated taking notes. I felt it was a waste of my time, and paper notes were not convenient to modify, polish, or format (mainly referring to high school, I tried and heavily used some electronic note products in college).
+In boring work, when I encounter something interesting, I want to organize it systematically. In a laid-back life, when I have some insights, I want to record them well.
 
-But writing a blog is completely different. You can modify it as much as you want, polish it repeatedly, beautify the layout, etc. (the most important thing is that you don't have to dislike your ugly handwriting).
+Organizing knowledge systems and recording thoughts—what is accumulated is the most precious wealth in our lives.
 
-Of course, producing a truly "content-rich" article is not easy and requires a lot of time and effort from the author. But precisely because of this, the things that are finally precipitated are more valuable.
+## Thoughts on Blog Content Direction
 
-In the boring work, encountering something interesting, I want to systematically organize it. In the laid-back life, I have some insights and want to record them well.
+What should you write about in a blog? That's a question!
 
-Organize the knowledge system and record thoughts and ideas. The things that are precipitated are the most valuable wealth in our lives.
+At first, I wanted to write about everything: new knowledge I learned, study notes, reposting good articles I found elsewhere, copying favorite quotes and texts, etc.
 
-<img src="https://assets.guoqi.dev/images/202312110226018.webp"/>
+But this leads to a serious problem: chaos!!!
 
-## Blog Content Direction Thoughts
+How to solve "chaos"? By subtraction.
 
-What exactly should I write in my blog? This is a question!
+When rebuilding my blog, I filtered some articles and kept only about ten pieces of content.
 
-At first, I wanted to write everything, write about the new knowledge I learned, write my study notes, repost good articles I saw elsewhere, and copy some favorite sentences and texts.
+This way, I think it's much more elegant.
 
-But this brings a very serious problem, that is: chaos!!!
+## Final Words
 
-How to solve "chaos"? That is to do subtraction.
+Writing this article was a spontaneous decision when I saw...
 
-When rebuilding the blog, I screened some articles and left only about ten pieces of content. Most of these ten pieces are life essays and play guides.
+In today's fast-paced, fragmented era, there are still people who uphold a reverence for science and technology, cherish a longing for a better life, maintain the ability to think independently, quietly settle, subtly change, slowly grow, and silently contribute...
 
-In addition, I opened a new website to record my study notes, technical understanding, and summaries.
+![](https://files.guoqi.dev/images/20250831222441059.webp)
 
-https://brain.sunguoqi.com
-
-In this way, I feel much more elegant.
-
-<img src="https://assets.guoqi.dev/images/202312091544680.webp" />
-
-## In Conclusion
-
-Writing this article was a spur-of-the-moment idea when I saw...
-
-<img src="https://assets.guoqi.dev/images/202312110244707.webp" >
-
-In this fast-paced, fragmented era, there are still a group of people who can uphold their worship of science and technology, cherish their longing for a better life, maintain the ability to think independently, quietly settle down, quietly change, slowly grow, and silently contribute...
-
-I am Xiao Sun, "Chinese Independent Blogger", welcome all bloggers to exchange links~
-
-https://blog.sunguoqi.com/link/
+I am Xiao Sun, "Chinese Independent Blogger". Welcome fellow bloggers to exchange links～
 
 ```yml
-name: Xiao Sun
-link: https://blog.sunguoqi.com
-avatar: https://blog.sunguoqi.com/images/avatar.jpg
-descr: The road is long, but if you keep going, you will reach it; the task is difficult, but if you keep doing it, you will succeed!
+name: 小孙同学
+link: https://guoqi.dev
+avatar: https://files.guoqi.dev/images/avatar.webp
+describe: 一个理性的浪漫主义者
 ```
-
-> A preview~ There will be a few long articles updated at the end of the year, so stay tuned.
