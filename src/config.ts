@@ -14,13 +14,13 @@ export const themeConfig: ThemeConfig = {
     // author name
     author: 'sun0225SUN',
     // site url
-    url: 'https://guoqi.dev',
+    url: 'https://blog.guoqi.dev',
     // base path
     // root directory for all pages and assets
     base: '/', // e.g., '/blog', '/docs'
     // favicon url
     // recommended formats: svg, png or ico
-    favicon: 'https://files.guoqi.dev/images/favicon.ico', // or https://example.com/favicon.svg
+    favicon: 'https://files.guoqi.dev/favicon.ico', // or https://example.com/favicon.svg
   },
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 

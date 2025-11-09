@@ -21,35 +21,35 @@ abbrlink: kun-lun-chao
 
 First floor of Design Capital Building, Xicheng District, Beijing. I arrived at Kunlun Nest around noon.
 
-<img src="https://files.guoqi.dev/images/202403180633265.webp"/>
+![](https://files.guoqi.dev/images/202403180633265.webp)
 
 When I first entered, I felt a bit awkward and didn't know what to do. But soon, the atmosphere ignited.
 
 After greeting [Kaiyi](https://kaiyi.cool) and [Dashu](https://dashu.ai), I made a cup of coffee, sat down, opened my laptop, and soon someone came to "network" with me.
 
-<img src="https://files.guoqi.dev/images/202403180633800.webp"/>
+![](https://files.guoqi.dev/images/202403180633800.webp)
 
 Soon after, [Smart](https://x.com/xchaigl) and [Uncle Wolf](https://x.com/i5ting) arrived at the venue one after another.
 
 Uncle Wolf is really humorous offline, a super "interesting engineer". Just between us: <mark>Smart's phone font is really huge</mark>.
 
-<img src="https://files.guoqi.dev/images/202403180634767.webp"/>
+![](https://files.guoqi.dev/images/202403180634767.webp)
 
 Around 2 PM, we welcomed [Xinbao Otto](https://x.com/xinbao965) (the event's speaker and host of the [《Web Worker》](https://webworker.tech) podcast).
 
-<img src="https://files.guoqi.dev/images/202403180635382.webp"/>
+![](https://files.guoqi.dev/images/202403180635382.webp)
 
 ## Lightning Talks
 
 All guests were in place, with Kaiyi hosting, and the event entered the "Lightning Talks" session.
 
-<img src="https://files.guoqi.dev/images/202403180635380.webp"/>
+![](https://files.guoqi.dev/images/202403180635380.webp)
 
 ### [Kaiyi](https://kaiyi.cool)
 
 Kaiyi's topic was "LLM! LLM! LLM!" - Large Language Models. Starting from paper rewriting, Kaiyi analyzed the characteristics of LLMs and the core value orientation of the LLM era, sharing survival strategies for the age of large language models. It was very insightful and beneficial.
 
-<img src="https://files.guoqi.dev/images/202403180638914.webp"/>
+![](https://files.guoqi.dev/images/202403180638914.webp)
 
 ### [Dashu](https://dashu.ai)
 
@@ -61,7 +61,7 @@ Dashu's topic was "Playing with Another Soul in the World" - an impressive "meta
 
 This website has many novel and quirky features. You can buy land, socialize, play music, and even hold meetings inside. There are also many easter eggs waiting for the community to discover (Teacher Dashu said he doesn't even remember some of the easter eggs himself, hahaha).
 
-<img src="https://files.guoqi.dev/images/202403180639004.webp"/>
+![](https://files.guoqi.dev/images/202403180639004.webp)
 
 ### [Acui](https://x.com/cuixr1314)
 
@@ -73,7 +73,7 @@ Earthworm is an open-source, collaborative, user-friendly English learning tool.
 
 The entire sharing was full of practical insights, providing great reference value for groups like "freelancers", "independent developers", and "super individuals".
 
-<img src="https://files.guoqi.dev/images/202403180641373.webp"/>
+![](https://files.guoqi.dev/images/202403180641373.webp)
 
 ### [Xinbao](https://x.com/xinbao965)
 
@@ -83,7 +83,7 @@ Xinbao's topic was "Why Do People Say Astro is Great?"
 
 "Coach, I want to learn", "Reigniting the light of HTML+CSS is our duty".
 
-<img src="https://files.guoqi.dev/images/202403180642382.webp"/>
+![](https://files.guoqi.dev/images/202403180642382.webp)
 
 ### [Jingliu](https://space.bilibili.com/23372292)
 
@@ -107,19 +107,19 @@ Teacher Yafang's topic was "2024 AI Technology Trends & AIGC Application Trends"
 
 Artificial intelligence is really hot right now, and Teacher Yafang's content was high-energy throughout. Welcome to follow "Machine Heart" to learn more about the latest AI news.
 
-<img src="https://files.guoqi.dev/images/202403180645031.webp"/>
+![](https://files.guoqi.dev/images/202403180645031.webp)
 
 ### Wang Yi
 
 Teacher Wang Yi mainly shared his own career experience and thoughts, from photography to software development - truly a very cool thing.
 
-<img src="https://files.guoqi.dev/images/202403180646912.webp"/>
+![](https://files.guoqi.dev/images/202403180646912.webp)
 
 > Inspired by the monolith, an ape had a flash of insight, picked up a bone, and split open another creature's skull - humanity's path to the cosmic stage was paved with blood.
 >
 > ——1968 Stanley Kubrick "2001: A Space Odyssey"
 
-<img src="https://files.guoqi.dev/images/202403180646875.webp"/>
+![](https://files.guoqi.dev/images/202403180646875.webp)
 
 ### Yongwang
 
@@ -127,7 +127,7 @@ Teacher Yongwang's topic was "A Programmer's Survival Guide" - Real estate is no
 
 With his witty and humorous speaking style, meticulous thinking logic, and rigorous data support, Teacher Yongwang provided excellent reference for programmers' health.
 
-<img src="https://files.guoqi.dev/images/202403180647973.webp"/>
+![](https://files.guoqi.dev/images/202403180647973.webp)
 
 ### [Uncle Wolf](https://x.com/i5ting)
 
@@ -137,7 +137,7 @@ From many dimensions and perspectives, Uncle Wolf pointed the way forward for "i
 
 ::github{repo="npmstudy/indie-dev-with-ai"}
 
-<img src="https://files.guoqi.dev/images/202403180648580.webp"/>
+![](https://files.guoqi.dev/images/202403180648580.webp)
 
 ### Roundtable Discussion
 
@@ -145,7 +145,7 @@ After the talks, the event entered the roundtable discussion session.
 
 I sat at a table with Xinbao, met several new big shots, and Cell also arrived at the venue at this time.
 
-<img src="https://files.guoqi.dev/images/202403180649220.webp"/>
+![](https://files.guoqi.dev/images/202403180649220.webp)
 
 ## Interesting Souls Will Eventually Meet
 
@@ -165,4 +165,4 @@ In the evening, I had barbecue with Xinbao, Smart, and Kaiyi, and over drinks we
 
 Web Worker is also hosting an offline meetup at the end of this month. Interesting souls will eventually meet - let's look forward to it～
 
-<img src="https://files.guoqi.dev/images/202403180657232.webp"/>
+![](https://files.guoqi.dev/images/202403180657232.webp)

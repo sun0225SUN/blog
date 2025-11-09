@@ -21,35 +21,35 @@ abbrlink: kun-lun-chao
 
 北京市西城区设计之都大厦一层，我是十二点左右来到昆仑巢的。
 
-<img src="https://files.guoqi.dev/images/202403180633265.webp"/>
+![](https://files.guoqi.dev/images/202403180633265.webp)
 
 刚进去的时候还有些小局促，不知道该干点啥。不过很快，氛围就燃起来了。
 
 和[开翼](https://kaiyi.cool)、[大帅老师](https://dashu.ai) 打完招呼后，冲了杯咖啡，坐在位子上，打开电脑，很快就有人来“搭讪”了。
 
-<img src="https://files.guoqi.dev/images/202403180633800.webp"/>
+![](https://files.guoqi.dev/images/202403180633800.webp)
 
 不久，[Smart](https://x.com/xchaigl) 和[狼叔](https://x.com/i5ting)相继来到了会场。
 
 狼叔线下真的很幽默，是一位超“有趣的工程师”。小声说：<mark>Smart 的手机字体真的超大号</mark>。
 
-<img src="https://files.guoqi.dev/images/202403180634767.webp"/>
+![](https://files.guoqi.dev/images/202403180634767.webp)
 
 大概下午两点钟，我们等来了[辛宝 Otto](https://x.com/xinbao965)（本次活动的演讲嘉宾，[《Web Worker》](https://webworker.tech)播客主播）。
 
-<img src="https://files.guoqi.dev/images/202403180635382.webp"/>
+![](https://files.guoqi.dev/images/202403180635382.webp)
 
 ## 闪电演讲
 
 所有嘉宾已全部就位，开翼主持，活动进入了「闪电演讲」环节。
 
-<img src="https://files.guoqi.dev/images/202403180635380.webp"/>
+![](https://files.guoqi.dev/images/202403180635380.webp)
 
 ### [开翼](https://kaiyi.cool)
 
 开翼分享的主题是《LLM！LLM! LLM! 》，大语言模型。从论文降重切入，开翼分析了 LLM 的特点以及 LLM 时代的核心价值取向，分享了大语言模型时代的生存之道。收获良多，受益匪浅。
 
-<img src="https://files.guoqi.dev/images/202403180638914.webp"/>
+![](https://files.guoqi.dev/images/202403180638914.webp)
 
 ### [大帅](https://dashu.ai)
 
@@ -61,7 +61,7 @@ https://thesoulsland.dashu.ai
 
 这个网站拥有很多新奇古怪的玩法，你可以在里面买地、社交、演奏音乐、甚至是开会。还有好多彩蛋等待社区挖掘（大帅老师说有些彩蛋他自己都不记得了，哈哈哈）。
 
-<img src="https://files.guoqi.dev/images/202403180639004.webp"/>
+![](https://files.guoqi.dev/images/202403180639004.webp)
 
 ### [阿崔](https://x.com/cuixr1314)
 
@@ -73,7 +73,7 @@ earthworm 是一款开源、协作、用户友好的英语学习工具。从有 
 
 分享内容全程干货，为「自由职业者」、「独立开发者」、「超级个体」等群体提供了很大参考价值和借鉴意义。
 
-<img src="https://files.guoqi.dev/images/202403180641373.webp"/>
+![](https://files.guoqi.dev/images/202403180641373.webp)
 
 ### [辛宝](https://x.com/xinbao965)
 
@@ -83,7 +83,7 @@ https://www.yuque.com/xinbao37/learn/mob8zk816xmqhih8
 
 “教练，我想学”，“重铸 HTML+CSS 之光，吾辈义不容辞”。
 
-<img src="https://files.guoqi.dev/images/202403180642382.webp"/>
+![](https://files.guoqi.dev/images/202403180642382.webp)
 
 ### [静流](https://space.bilibili.com/23372292)
 
@@ -107,19 +107,19 @@ https://www.yuque.com/xinbao37/learn/mob8zk816xmqhih8
 
 人工智能真的太火了，雅芳老师分享的内容也是全程高能。欢迎大家关注「机器之心」了解更多关于 AI 的最新资讯。
 
-<img src="https://files.guoqi.dev/images/202403180645031.webp"/>
+![](https://files.guoqi.dev/images/202403180645031.webp)
 
 ### 王毅
 
 王毅老师主要分享了他自己的职业经历与思考，从做摄影到搞软件，真是一件非常酷的事情。
 
-<img src="https://files.guoqi.dev/images/202403180646912.webp"/>
+![](https://files.guoqi.dev/images/202403180646912.webp)
 
 > 在黑石的启发下，一个猿人灵光乍现后捡起一根骨头砍开了另一个生物的头颅——人类走上宇宙舞台的道路是用鲜血铺就的。
 >
 > ——1968 年 斯坦利库布里克《2001 太空漫游》
 
-<img src="https://files.guoqi.dev/images/202403180646875.webp"/>
+![](https://files.guoqi.dev/images/202403180646875.webp)
 
 ### 永旺
 
@@ -127,7 +127,7 @@ https://www.yuque.com/xinbao37/learn/mob8zk816xmqhih8
 
 永旺老师用其风趣幽默的演讲风格，缜密的思考逻辑和严谨的数据支撑，为程序员朋友的健康提供了很好的参考。
 
-<img src="https://files.guoqi.dev/images/202403180647973.webp"/>
+![](https://files.guoqi.dev/images/202403180647973.webp)
 
 ### [狼叔](https://x.com/i5ting)
 
@@ -137,7 +137,7 @@ https://www.yuque.com/xinbao37/learn/mob8zk816xmqhih8
 
 ::github{repo="npmstudy/indie-dev-with-ai"}
 
-<img src="https://files.guoqi.dev/images/202403180648580.webp"/>
+![](https://files.guoqi.dev/images/202403180648580.webp)
 
 ### 圆桌讨论
 
@@ -145,7 +145,7 @@ https://www.yuque.com/xinbao37/learn/mob8zk816xmqhih8
 
 我和辛宝坐一桌，认识了几位新的大佬，Cell 也在此时赶到了会场。
 
-<img src="https://files.guoqi.dev/images/202403180649220.webp"/>
+![](https://files.guoqi.dev/images/202403180649220.webp)
 
 ## 有趣的灵魂终将相遇
 
@@ -165,4 +165,4 @@ https://www.yuque.com/xinbao37/learn/mob8zk816xmqhih8
 
 Web Worker 这个月月底也要举办线下交流会了，有趣的灵魂终将相遇，让我们翘首以盼吧～
 
-<img src="https://files.guoqi.dev/images/202403180657232.webp"/>
+![](https://files.guoqi.dev/images/202403180657232.webp)
