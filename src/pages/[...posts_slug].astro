@@ -98,6 +98,10 @@ const { post, lang, supportedLangs } = Astro.props
 const slug = post.data.abbrlink || post.id
 const description = getPostDescription(post, 'meta')
 const { Content, headings, remarkPluginFrontmatter } = await render(post)
+
+if (slug === 'kun-lun-chao') {
+  await import('@/styles/posts/kunlunchao.css')
+}
 ---
 
 <Layout
