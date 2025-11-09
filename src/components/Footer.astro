@@ -13,7 +13,7 @@ const year = Number(startYear) === currentYear ? startYear : `${startYear}-${cur
 const currentLang = getLangFromPath(Astro.url.pathname)
 const links = socialLinks.map(({ name, url, ...rest }) => {
   if (name === 'RSS') {
-    return { name, url: getLocalizedPath(url, currentLang), ...rest }
+    return { name, url: getLocalizedPath(url, currentLang).slice(0, -1), ...rest }
   }
 
   if (name === 'Email') {
