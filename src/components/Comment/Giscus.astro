@@ -35,10 +35,19 @@ const {
     giscusLocaleMap,
   }}
 >
+function isLocalDev() {
+  const hostname = window.location.hostname
+  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === ''
+}
+
 function getThemeUrl() {
   const isDark = document.documentElement.classList.contains('dark')
-  const origin = window.location.origin
 
+  if (isLocalDev()) {
+    return isDark ? 'dark' : 'light'
+  }
+
+  const origin = window.location.origin
   return isDark
     ? `${origin}${base}/giscus/theme-dark.css`
     : `${origin}${base}/giscus/theme-light.css`
