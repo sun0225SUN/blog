@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getPostPath } from '@/i18n/path'
+
+type Post = CollectionEntry<'posts'> & {
+  remarkPluginFrontmatter: {
+    minutes: number
+  }
+}
+
+interface Props {
+  postsByYear: Map<number, Post[]>
+  lang: string
+}
+
+const { postsByYear, lang } = Astro.props
+---
+
+<div>
+  {[...postsByYear.entries()].map(([year, posts], yearIndex) => (
+    <div class="mb-6 last:mb-0">
+      <div class="flex items-start">
+        <h2 class="mr-8 flex-shrink-0 pt-0.5 text-6 c-secondary/60 leading-none font-serif italic">
+          {year}
+        </h2>
+
+        <div class="flex-1">
+          <ul>
+            {posts.map((post) => {
+              const slug = post.data.abbrlink || post.id
+              const month = post.data.published.getMonth() + 1
+              const day = post.data.published.getDate()
+              const dateStr = `${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+
+              return (
+                <li class="mb-3.5 flex items-baseline last:mb-0">
+                  <a
+                    href={getPostPath(slug, lang)}
+                    class="flex-1 c-secondary transition-colors hover:c-primary cjk:tracking-0.02em"
+                    transition:name={`post-${slug}${lang ? `-${lang}` : ''}`}
+                    data-disable-theme-transition
+                  >
+                    {post.data.title}
+                  </a>
+
+                  <time
+                    datetime={post.data.published.toISOString().split('T')[0]}
+                    class="ml-4 flex-shrink-0 text-3.5 c-secondary/60 font-serif italic"
+                    transition:name={`time-${slug}${lang ? `-${lang}` : ''}`}
+                    data-disable-theme-transition
+                  >
+                    {dateStr}
+                  </time>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </div>
+
+      {yearIndex < [...postsByYear.entries()].length - 1 && (
+        <div class="mt-6 border-t border-secondary/20 border-dashed"></div>
+      )}
+    </div>
+  ))}
+</div>
+

@@ -1,36 +1,60 @@
 ---
-import { getTagPath } from '@/i18n/path'
+import { getLocalizedPath, getTagPath } from '@/i18n/path'
+import { ui } from '@/i18n/ui'
 
 interface Props {
   tags: string[]
   currentTag?: string
   lang: string
+  tagCounts?: Map<string, number>
+  showAllPosts?: boolean
+  allPostsCount?: number
 }
 
-const { tags, currentTag = '', lang } = Astro.props;
+const { tags, currentTag = '', lang, tagCounts, showAllPosts = false, allPostsCount } = Astro.props
+const allPostsText = ui[lang as keyof typeof ui]?.allPosts || 'All Posts'
 ---
 
 <div class="no-heti flex flex-wrap gap-x-3 gap-y-3.2">
-  {tags.map(tag => (
+  {showAllPosts && (
     <a
-      href={getTagPath(tag, lang)}
+      href={getLocalizedPath('tags', lang)}
       class:list={[
-        currentTag === tag
-          ? 'border-secondary/80 c-primary font-medium ring-0.2'
-          : 'ring-0',
-          'relative inline-block border border-secondary/25 rounded-full px-3.2 py-0.7 ring-secondary/80',
-          'transition-[colors,box-shadow] ease-out hover:(border-secondary/80 c-primary font-medium ring-0.2)',
+        'inline-block rounded-full border px-3.2 py-0.7 transition-colors ease-out',
+        currentTag === ''
+          ? 'c-primary font-medium border-primary bg-primary/3'
+          : 'c-secondary border-secondary/30 hover:(c-primary border-primary/50)',
       ]}
     >
-      <span class="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-font-weight">
-        {tag}
-      </span>
-      <span
-        class="inline-block font-medium opacity-0"
-        aria-hidden="true"
+      {allPostsText}
+      {allPostsCount !== undefined && (
+        <span class="ml-1.5 text-0.85em opacity-80">
+          {allPostsCount}
+        </span>
+      )}
+    </a>
+  )}
+
+  {tags.map((tag) => {
+    const count = tagCounts?.get(tag) || 0
+    const isActive = currentTag === tag
+    return (
+      <a
+        href={getTagPath(tag, lang)}
+        class:list={[
+          'inline-block rounded-full border px-3.2 py-0.7 transition-colors ease-out',
+          isActive
+            ? 'c-primary font-medium border-primary bg-primary/3'
+            : 'c-secondary border-secondary/30 hover:(c-primary border-primary/50)',
+        ]}
       >
         {tag}
-      </span>
-    </a>
-  ))}
+        {count > 0 && (
+          <span class="ml-1.5 text-0.85em opacity-80">
+            {count}
+          </span>
+        )}
+      </a>
+    )
+  })}
 </div>

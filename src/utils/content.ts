@@ -161,6 +161,35 @@ async function _getPostsByYear(lang?: string): Promise<Map<number, Post[]>> {
 export const getPostsByYear = memoize(_getPostsByYear)
 
 /**
+ * Group a list of posts by year
+ *
+ * @param posts Array of posts to group
+ * @returns Map of posts grouped by year (descending), sorted by date within each year
+ */
+export function groupPostsByYear(posts: Post[]): Map<number, Post[]> {
+  const yearMap = new Map<number, Post[]>()
+
+  posts.forEach((post: Post) => {
+    const year = post.data.published.getFullYear()
+    if (!yearMap.has(year)) {
+      yearMap.set(year, [])
+    }
+    yearMap.get(year)!.push(post)
+  })
+
+  // Sort posts within each year by date
+  yearMap.forEach((yearPosts) => {
+    yearPosts.sort((a, b) => {
+      const aDate = a.data.published
+      const bDate = b.data.published
+      return bDate.valueOf() - aDate.valueOf()
+    })
+  })
+
+  return new Map([...yearMap.entries()].sort((a, b) => b[0] - a[0]))
+}
+
+/**
  * Group posts by their tags
  *
  * @param lang The language code to filter by, defaults to site's default language

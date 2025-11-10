@@ -30,10 +30,6 @@ The courtyard's ambiance was excellent, reminiscent of "Youfeng Courtyard" (thou
 
 For lunch, we had "Iron Pot Ginger and Scallion Chicken," though it was just average (suddenly missing hometown stews and pancakes 🥹)
 
-![](https://files.guoqi.dev/images/202401022316984.webp)
-
-<br/>
-
 After lunch, we returned to the hotel to rest. At 17:30, we were set to depart for the sea 🌊
 
 Around 19:00, we successfully reached Lovers' Road (I must complain about this section in Xiangzhou District - it was really rough 😭)

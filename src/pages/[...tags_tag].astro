@@ -1,9 +1,9 @@
 ---
-import PostList from '@/components/PostList.astro'
+import PostListByYear from '@/components/PostListByYear.astro'
 import TagList from '@/components/TagList.astro'
 import { defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
-import { getAllTags, getPostsByTag, getTagSupportedLangs } from '@/utils/content'
+import { getAllTags, getPosts, getPostsByTag, getPostsGroupByTags, getTagSupportedLangs, groupPostsByYear } from '@/utils/content'
 
 export async function getStaticPaths() {
   type PathItem = {
@@ -38,24 +38,32 @@ export async function getStaticPaths() {
 
 const { tag, lang } = Astro.props
 const posts = await getPostsByTag(tag, lang)
+const postsByYear = groupPostsByYear(posts)
 const allTags = await getAllTags(lang)
+const tagMap = await getPostsGroupByTags(lang)
+const tagCounts = new Map<string, number>()
+tagMap.forEach((posts, tagName) => {
+  tagCounts.set(tagName, posts.length)
+})
 const supportedLangs = await getTagSupportedLangs(tag)
+const allPosts = await getPosts(lang)
 ---
 
 <Layout supportedLangs={supportedLangs}>
-  <!-- Decorative Line -->
   <div class="uno-decorative-line" />
-  <!-- Tag List -->
+
   <TagList
     tags={allTags}
     currentTag={tag}
     lang={lang}
+    tagCounts={tagCounts}
+    showAllPosts={true}
+    allPostsCount={allPosts.length}
   />
 
-  <!-- Posts List -->
   <div class="mt-10.5">
-    <PostList
-      posts={posts}
+    <PostListByYear
+      postsByYear={postsByYear}
       lang={lang}
     />
   </div>
