@@ -1,0 +1,23 @@
+{
+  "headers": [
+    {
+      "source": "/giscus/theme-light.css",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://giscus.app"
+        }
+      ]
+    },
+    {
+      "source": "/giscus/theme-dark.css",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://giscus.app"
+        }
+      ]
+    }
+  ]
+}
+
