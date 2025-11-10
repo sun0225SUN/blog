@@ -2,12 +2,13 @@
 import { ui } from '@/i18n/ui'
 import { getPageInfo } from '@/utils/page'
 
-const { currentLang, isHome, isPost, isTag, isAbout, getLocalizedPath } = getPageInfo(Astro.url.pathname)
+const { currentLang, isHome, isPost, isTag, isAbout, isLinks, getLocalizedPath } = getPageInfo(Astro.url.pathname)
 const currentUI = ui[currentLang as keyof typeof ui] ?? {}
 
 const isPostActive = isHome || isPost
 const isTagActive = isTag
 const isAboutActive = isAbout
+const isLinksActive = isLinks
 
 function getNavItemClass(isActive: boolean) {
   return isActive
@@ -25,6 +26,11 @@ const navItems = [
     href: '/tags/',
     label: currentUI.tags,
     className: getNavItemClass(isTagActive),
+  },
+  {
+    href: '/links/',
+    label: currentUI.links,
+    className: getNavItemClass(isLinksActive),
   },
   {
     href: 'https://shutiao.life',

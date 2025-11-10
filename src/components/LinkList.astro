@@ -1,0 +1,68 @@
+---
+import { links } from '@/links'
+
+interface Props {
+  links: typeof links
+}
+
+const { links: linkItems } = Astro.props
+---
+
+<div id="links-list" class="grid grid-cols-1 gap-4.5 lg:grid-cols-2 lg:gap-6">
+  {linkItems.map(link => (
+    <a
+      href={link.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex items-start gap-3.5 border border-secondary/15 rounded-lg p-4 transition-all duration-300 ease-out hover:(scale-[1.02] border-secondary/25 c-primary shadow-lg shadow-secondary/5 -translate-y-2) lg:gap-4 lg:p-4.5"
+    >
+      <img
+        src={link.avatar}
+        alt={link.name}
+        class="h-10 w-10 flex-shrink-0 rounded-full object-cover transition-transform duration-300 ease-out lg:h-11 lg:w-11 group-hover:scale-110"
+        loading="lazy"
+      />
+
+      <div class="min-w-0 flex-1">
+        <h3 class="mb-0.8 text-3.8 font-medium transition-colors duration-300 ease-out lg:mb-1 lg:text-4.2">
+          {link.name}
+        </h3>
+        <p class="text-3.2 text-secondary/70 transition-colors duration-300 ease-out lg:text-3.5 group-hover:text-secondary/80">
+          {link.description}
+        </p>
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  #links-list > a {
+    opacity: 0;
+    animation: fadeInUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+
+  #links-list > a:nth-child(1) { animation-delay: 0.1s; }
+  #links-list > a:nth-child(2) { animation-delay: 0.15s; }
+  #links-list > a:nth-child(3) { animation-delay: 0.2s; }
+  #links-list > a:nth-child(4) { animation-delay: 0.25s; }
+  #links-list > a:nth-child(5) { animation-delay: 0.3s; }
+  #links-list > a:nth-child(6) { animation-delay: 0.35s; }
+  #links-list > a:nth-child(7) { animation-delay: 0.4s; }
+  #links-list > a:nth-child(8) { animation-delay: 0.45s; }
+  #links-list > a:nth-child(n+9) { animation-delay: 0.5s; }
+
+  @media (max-width: 1023px) {
+    #links-list > a:nth-child(n+6) {
+      opacity: 1;
+      transform: translateY(0);
+      animation: none;
+    }
+  }
+
+  html.reduce-motion #links-list > a {
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
+  }
+</style>
+

@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content'
+import Comment from '@/components/Comment/Index.astro'
+import LinkList from '@/components/LinkList.astro'
+import { defaultLocale, moreLocales } from '@/config'
+import Layout from '@/layouts/Layout.astro'
+import { links } from '@/links'
+
+export async function getStaticPaths() {
+  type PathItem = {
+    params: { links: string }
+    props: { lang: string }
+  }
+
+  const paths: PathItem[] = []
+
+  paths.push({
+    params: { links: 'links/' },
+    props: { lang: defaultLocale },
+  })
+
+  moreLocales.forEach((lang: string) => {
+    paths.push({
+      params: { links: `${lang}/links/` },
+      props: { lang },
+    })
+  })
+
+  return paths
+}
+
+const { lang } = Astro.props
+
+const allLinksEntries = await getCollection('links')
+const linksEntry = allLinksEntries.find(entry => entry.data.lang === lang)
+  ?? allLinksEntries.find(entry => entry.data.lang === '')
+const { Content } = linksEntry ? await render(linksEntry) : { Content: null }
+---
+
+<Layout>
+  <div class="uno-decorative-line" />
+  <LinkList links={links} />
+  {Content && (
+    <div class="heti mt-10">
+      <Content />
+    </div>
+  )}
+  <Comment />
+</Layout>
+

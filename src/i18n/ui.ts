@@ -9,6 +9,7 @@ export const ui = {
     cycling: 'Cycling',
     podcast: 'Podcast',
     about: 'About',
+    links: 'Links',
     toc: 'Table of Contents',
   },
   zh: {
@@ -21,6 +22,7 @@ export const ui = {
     cycling: '骑行',
     podcast: '播客',
     about: '关于',
+    links: '友链',
     toc: '目录',
   },
 }
