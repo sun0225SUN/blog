@@ -104,6 +104,6 @@ I am Xiao Sun, "Chinese Independent Blogger". Welcome fellow bloggers to exchang
 ```yml
 name: 小孙同学
 link: https://guoqi.dev
-avatar: https://files.guoqi.dev/images/avatar.webp
+avatar: https://files.guoqi.dev/avatar.webp
 describe: 一个理性的浪漫主义者
 ```

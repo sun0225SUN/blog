@@ -4,7 +4,7 @@ description: 保持着独立思考的能力，静静沉淀、悄悄改变、慢�
 published: 2023-12-09
 updated: 2025-08-31
 tags:
-  - 思考
+  - Thinking
 lang: zh
 abbrlink: blogger
 ---
@@ -104,6 +104,6 @@ Halo 的确很强大，而且免费、开源。在 GitHub 上收获了 29.6k 的
 ```yml
 name: 小孙同学
 link: https://guoqi.dev
-avatar: https://files.guoqi.dev/images/avatar.webp
+avatar: https://files.guoqi.dev/avatar.webp
 describe: 一个理性的浪漫主义者
 ```
