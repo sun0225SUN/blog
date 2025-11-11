@@ -1,5 +1,11 @@
 export const links = [
   {
+    name: 'liruifengv',
+    link: 'https://liruifengv.com',
+    description: 'Web 开发者，Astro 项目成员，开源爱好者。',
+    avatar: 'https://bucket.liruifengv.com/avatar.jpg',
+  },
+  {
     name: '张洪Heo',
     link: 'https://blog.zhheo.com',
     description: '分享设计与科技生活。',
@@ -28,5 +34,41 @@ export const links = [
     link: 'https://mt.ci',
     description: '前端切图仔🧑🏻‍💻，后端三脚猫🤷🏻‍♂️，运维挖坑人🤦🏻‍♂️，AI 门外汉🧐。',
     avatar: 'https://mt.ci/_astro/mt-black-line.DkyqjmVb_1sDO0S.webp',
+  },
+  {
+    name: 'Justin3go',
+    link: 'https://justin3go.com',
+    description: '一位 Indie Hacker / AI Maker / Full Stacker',
+    avatar: 'https://files.guoqi.dev/images/justin3go.jpg',
+  },
+  {
+    name: 'situ2001',
+    link: 'https://situ2001.com',
+    description: 'With curiosity, I explore; with empathy, I build.',
+    avatar: 'https://situ2001.com/avatar.webp',
+  },
+  {
+    name: 'AriaSay',
+    link: 'https://blog.ariasay.me',
+    description: 'TypeScript 全栈开发者；独立开发新人',
+    avatar: 'https://files.guoqi.dev/images/aria.jpg',
+  },
+  {
+    name: 'Debug客栈',
+    link: 'https://blog.debuginn.com/',
+    description: '永远相信美好的事情即将发生～',
+    avatar: 'https://files.guoqi.dev/images/20251111184604331.webp',
+  },
+  {
+    name: 'Corey Chiu',
+    link: 'https://coreychiu.com',
+    description: 'Software engineer, Full-Stack web developer, and indie hacker.',
+    avatar: 'https://coreychiu.com/_next/static/media/avatar.aa27a7da.jpg',
+  },
+  {
+    name: 'CaiCai',
+    link: 'https://www.caicai.me',
+    description: 'Product Designer, CPO of YouMind',
+    avatar: 'https://files.guoqi.dev/images/20251111231012071.webp',
   },
 ]
