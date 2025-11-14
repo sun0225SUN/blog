@@ -71,4 +71,10 @@ export const links = [
     description: 'Product Designer, CPO of YouMind',
     avatar: 'https://files.guoqi.dev/images/20251111231012071.webp',
   },
+  {
+    name: 'MaxQi的说说',
+    link: 'https://maxqi.top',
+    description: '一名高中生的技术与成长记录',
+    avatar: 'https://p.maxqi.top/img/2025/11/13/69158a2e057e4.jpg',
+  },
 ]
