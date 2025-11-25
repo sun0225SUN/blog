@@ -77,4 +77,10 @@ export const links = [
     description: '一名高中生的技术与成长记录',
     avatar: 'https://p.maxqi.top/img/2025/11/13/69158a2e057e4.jpg',
   },
+  {
+    name: '木竹',
+    description: '喜欢把复杂的图纸变成简洁优雅的造价文件',
+    link: 'https://www.laomuzhu.cn/',
+    avatar: 'https://www.laomuzhu.cn/img/touxiang.jpg',
+  },
 ]
