@@ -32,7 +32,7 @@ export interface Props {
         lg={isHome ? 'mb-10' : ''}
       >
         {/* post title */}
-        <h3 class="inline transition-colors hover:c-primary">
+        <h3 class="relative inline transition-colors hover:c-primary">
           <a
             class="cjk:tracking-0.02em"
             lg={isHome ? 'font-medium text-4.5' : ''}
@@ -49,6 +49,15 @@ export interface Props {
               class="ml-0.25em inline-block aspect-square w-0.98em translate-y--0.1em lg:(w-1.05em translate-y--0.15em)"
               fill="currentColor"
             />
+          )}
+          {/* paid badge */}
+          {post.data.paid && (
+            <span
+              class="ml-1.5 inline-block rounded-full from-amber-500 to-orange-500 bg-gradient-to-r px-1.5 py-0.25 align-middle text-2.5 text-white font-medium shadow-sm"
+              aria-label="Paid"
+            >
+              Paid
+            </span>
           )}
         </h3>
 

@@ -34,14 +34,24 @@ const { postsByYear, lang } = Astro.props
 
               return (
                 <li class="mb-3.5 flex items-baseline last:mb-0">
-                  <a
-                    href={getPostPath(slug, lang)}
-                    class="flex-1 c-secondary transition-colors hover:c-primary cjk:tracking-0.02em"
-                    transition:name={`post-${slug}${lang ? `-${lang}` : ''}`}
-                    data-disable-theme-transition
-                  >
-                    {post.data.title}
-                  </a>
+                  <div class="flex flex-1 items-baseline gap-1.5">
+                    <a
+                      href={getPostPath(slug, lang)}
+                      class="c-secondary transition-colors hover:c-primary cjk:tracking-0.02em"
+                      transition:name={`post-${slug}${lang ? `-${lang}` : ''}`}
+                      data-disable-theme-transition
+                    >
+                      {post.data.title}
+                    </a>
+                    {post.data.paid && (
+                      <span
+                        class="inline-block flex-shrink-0 rounded-full from-amber-500 to-orange-500 bg-gradient-to-r px-1.5 py-0.25 align-middle text-2.5 text-white font-medium shadow-sm"
+                        aria-label="Paid"
+                      >
+                        Paid
+                      </span>
+                    )}
+                  </div>
 
                   <time
                     datetime={post.data.published.toISOString().split('T')[0]}

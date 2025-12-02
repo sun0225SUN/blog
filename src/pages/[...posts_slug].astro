@@ -115,13 +115,21 @@ if (slug === 'kun-lun-chao') {
       <!-- Go Back Button On Desktop -->
       <BackButton />
       <!-- Title -->
-      <h1 class="post-title">
+      <h1 class="post-title relative">
         <span
           transition:name={`post-${slug}${lang ? `-${lang}` : ''}`}
           data-disable-theme-transition
         >
           {post.data.title}
         </span>
+        {post.data.paid && (
+          <span
+            class="absolute right-0 top-0 rounded-full from-amber-500 to-orange-500 bg-gradient-to-r px-2 py-0.5 text-xs text-white font-medium shadow-sm"
+            aria-label="Paid content"
+          >
+            Paid
+          </span>
+        )}
       </h1>
     </div>
 

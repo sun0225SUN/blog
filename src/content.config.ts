@@ -19,6 +19,7 @@ const posts = defineCollection({
     draft: z.boolean().optional().default(false),
     pin: z.number().int().min(0).max(99).optional().default(0),
     toc: z.boolean().optional().default(themeConfig.global.toc),
+    paid: z.boolean().optional().default(false),
     lang: z.enum(['', ...allLocales]).optional().default(''),
     abbrlink: z.string().optional().default('').refine(
       abbrlink => !abbrlink || /^[a-z0-9\-]*$/.test(abbrlink),
