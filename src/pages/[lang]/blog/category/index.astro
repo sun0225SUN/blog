@@ -1,0 +1,31 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { localePaths, useTranslations } from '../../../../i18n'
+import Layout from '../../../../layouts/Layout.astro'
+import { getCategories, pageLocale } from '../../../../lib/content'
+
+export function getStaticPaths() {
+  return localePaths()
+}
+
+const lang = pageLocale(Astro.currentLocale, Astro.params.lang)
+const t = useTranslations(lang)
+const categories = await getCategories(lang)
+---
+
+<Layout
+  title={t('blog.categories')}
+  description={t('blog.categoriesDescription')}
+>
+  <h1 class="mb-8 text-2xl font-semibold">{t('blog.categories')}</h1>
+  <div class="flex flex-wrap gap-x-4 gap-y-2 text-lg">
+    {categories.map((category) => (
+      <a
+        href={getRelativeLocaleUrl(lang, `blog/category/${category.slug}`)}
+        class='hover:underline hover:underline-offset-4'
+      >
+        {category.name}
+      </a>
+    ))}
+  </div>
+</Layout>

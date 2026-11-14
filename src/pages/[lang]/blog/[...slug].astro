@@ -1,0 +1,36 @@
+---
+import { type CollectionEntry, render } from 'astro:content'
+import { locales } from '../../../i18n'
+import BlogPost from '../../../layouts/BlogPost.astro'
+import { entrySlug, getBlogPosts } from '../../../lib/content'
+import { renderedPostMeta } from '../../../lib/markdown'
+
+export async function getStaticPaths() {
+  const paths = []
+  for (const lang of locales) {
+    const posts = await getBlogPosts(lang)
+    for (const post of posts) {
+      paths.push({
+        params: { lang, slug: entrySlug(post.id) },
+        props: post,
+      })
+    }
+  }
+  return paths
+}
+
+type Props = CollectionEntry<'blog'>
+
+const post = Astro.props
+const { Content, headings, remarkPluginFrontmatter } = await render(post)
+const meta = renderedPostMeta(remarkPluginFrontmatter)
+---
+
+<BlogPost
+  {...post.data}
+  {...meta}
+  slug={entrySlug(post.id).replaceAll('/', '-')}
+  headings={headings}
+>
+  <Content />
+</BlogPost>

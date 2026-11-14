@@ -1,0 +1,72 @@
+---
+import { useTranslations } from '../../i18n'
+import {
+  type BlogPost,
+  getBlogPosts,
+  isPinned,
+  localeFromParam,
+  pinnedPosts,
+} from '../../lib/content'
+import PostRow from './PostRow.astro'
+
+interface Props {
+  posts?: BlogPost[]
+  variant?: 'latest' | 'archive' | 'dated'
+  limit?: number
+}
+
+const lang = localeFromParam(Astro.currentLocale)
+const t = useTranslations(lang)
+const variant = Astro.props.variant ?? 'dated'
+const source = Astro.props.posts ?? (await getBlogPosts(lang))
+const pinned =
+  Astro.props.posts || variant !== 'latest' ? [] : pinnedPosts(source)
+const rest = pinned.length ? source.filter((post) => !isPinned(post)) : source
+const posts = Astro.props.limit ? rest.slice(0, Astro.props.limit) : rest
+const rows = [...pinned, ...posts]
+const grouped = variant === 'archive'
+
+const groups: { year: number; posts: BlogPost[] }[] = []
+if (grouped) {
+  for (const post of posts) {
+    const year = post.data.pubDate.getUTCFullYear()
+    const last = groups.at(-1)
+    if (!last || last.year !== year) groups.push({ year, posts: [post] })
+    else last.posts.push(post)
+  }
+}
+---
+
+{rows.length === 0 ? (
+  <p class='text-muted dark:text-muted-dark'>{t('home.empty')}</p>
+) : grouped ? (
+  <div class='flex flex-col gap-8'>
+    {groups.map((group) => (
+      <div class='year-group'>
+        <h2 class='mb-8 text-2xl font-bold'>{group.year}</h2>
+        <div class='flex flex-col gap-3'>
+          {group.posts.map((post) => (
+            <PostRow
+              post={post}
+              lang={lang}
+              dateFormat='MM-DD'
+              dateWidth='w-20'
+            />
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+) : (
+  <div class='flex flex-col gap-3'>
+    {rows.map((post) => (
+      <PostRow
+        post={post}
+        lang={lang}
+        dateFormat='YYYY-MM-DD'
+        dateWidth='w-32'
+        pinned={variant === 'latest' && isPinned(post)}
+      />
+    ))}
+  </div>
+)}

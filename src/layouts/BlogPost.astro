@@ -1,0 +1,114 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import type { MarkdownHeading } from 'astro'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import FormattedDate from '../components/blog/FormattedDate.astro'
+import PostTerms from '../components/blog/PostTerms.astro'
+import TableOfContents from '../components/blog/TableOfContents.astro'
+import Prose from '../components/content/Prose.astro'
+import { config } from '../config'
+import { useTranslations } from '../i18n'
+import { localeFromParam, taxonomySlug } from '../lib/content'
+import Layout from './Layout.astro'
+import 'dayjs/locale/ja'
+import 'dayjs/locale/ko'
+import 'dayjs/locale/zh-cn'
+import 'dayjs/locale/zh-tw'
+
+dayjs.extend(utc)
+
+type Props = CollectionEntry<'blog'>['data'] & {
+  slug: string
+  headings?: MarkdownHeading[]
+  lastModified?: string
+  readingMinutes?: number
+}
+
+const {
+  title,
+  description,
+  author,
+  pubDate,
+  updatedDate,
+  category,
+  tags,
+  slug,
+  headings = [],
+  lastModified,
+  readingMinutes,
+} = Astro.props
+const lang = localeFromParam(Astro.currentLocale)
+const t = useTranslations(lang)
+const authorName = author || config.author
+const modified = lastModified ? dayjs(lastModified) : undefined
+const modifiedLabel = modified?.isValid()
+  ? modified.utc().format('YYYY-MM-DD HH:mm')
+  : undefined
+---
+
+<Layout title={title} description={description}>
+  <article class="prose dark:prose-invert w-full max-w-3xl overflow-hidden">
+    <div class="flex flex-col gap-2">
+      <h2 class="my-0! text-3xl font-semibold">
+        <span
+          class="inline-block w-fit max-w-full"
+          transition:name={`post-${lang}-${slug}`}
+        >
+          {title}
+        </span>
+      </h2>
+      <div
+        class="not-prose mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted dark:text-muted-soft"
+      >
+        <span> {t('post.author')} {authorName} </span>
+        <span aria-hidden="true">·</span>
+        {category && (
+          <span>
+            {t('post.filedUnder')}{' '}
+            <a
+              href={getRelativeLocaleUrl(
+                lang,
+                `blog/category/${taxonomySlug(category)}`,
+              )}
+              class='text-accent no-underline hover:text-accent-hover dark:text-accent-dark dark:hover:text-accent-dark-hover'
+              data-umami-event='category'
+              data-umami-event-name={category}
+            >
+              {category}
+            </a>
+          </span>
+        )}
+        {category && <span aria-hidden='true'>·</span>}
+        <span
+          class="inline-block w-fit"
+          transition:name={`time-${lang}-${slug}`}
+        >
+          <FormattedDate date={pubDate} />
+        </span>
+        {readingMinutes && (
+          <span>· {t('post.readingTime', { minutes: readingMinutes })}</span>
+        )}
+        {updatedDate && (
+          <span>
+            · {t('post.updated')} <FormattedDate date={updatedDate} />
+          </span>
+        )}
+        {modifiedLabel && lastModified && (
+          <span>
+            · {t('post.lastModified')}{' '}
+            <time datetime={lastModified}>{modifiedLabel}</time>
+          </span>
+        )}
+      </div>
+    </div>
+    <Prose>
+      <div id="post-content">
+        <slot />
+      </div>
+    </Prose>
+    <PostTerms tags={tags} />
+  </article>
+  <TableOfContents headings={headings} />
+</Layout>

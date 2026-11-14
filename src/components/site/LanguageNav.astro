@@ -1,0 +1,25 @@
+---
+import Languages from '@lucide/astro/icons/languages'
+import { nextLocale } from '../../i18n'
+import { contentPath, localeFromParam, localeHref } from '../../lib/content'
+
+const lang = localeFromParam(Astro.currentLocale)
+const next = nextLocale(lang)
+const href = await localeHref(next, contentPath(Astro.url.pathname, lang))
+const label = next
+---
+
+<a
+  href={href}
+  hrefLang={next}
+  lang={next}
+  class="text-current"
+  aria-label={label}
+  title={label}
+  data-astro-reload
+  data-umami-event="language"
+  data-umami-event-locale={next}
+>
+  <Languages size={22} aria-hidden="true" />
+  <span class="sr-only">{label}</span>
+</a>

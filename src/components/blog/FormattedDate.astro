@@ -1,0 +1,17 @@
+---
+interface Props {
+  date: Date
+  format?: string
+}
+
+const { date, format = 'YYYY-MM-DD' } = Astro.props
+const tokens: Record<string, string> = {
+  YYYY: String(date.getUTCFullYear()),
+  MM: String(date.getUTCMonth() + 1).padStart(2, '0'),
+  DD: String(date.getUTCDate()).padStart(2, '0'),
+}
+const label = format.replace(/YYYY|MM|DD/g, (match) => tokens[match] ?? match)
+const datetime = date.toISOString().slice(0, 10)
+---
+
+<time datetime={datetime}>{label}</time>

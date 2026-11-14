@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Prose from '../components/content/Prose.astro'
+import Layout from './Layout.astro'
+
+type Props = CollectionEntry<'pages'>['data']
+
+const { title, description } = Astro.props
+---
+
+<Layout title={title} description={description}>
+  <article class="prose dark:prose-invert w-full max-w-3xl">
+    <h2 class="my-0! text-3xl font-semibold">{title}</h2>
+    <Prose>
+      <slot />
+    </Prose>
+  </article>
+</Layout>

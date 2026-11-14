@@ -1,0 +1,22 @@
+---
+import Pager from '../../../components/blog/Pager.astro'
+import PostList from '../../../components/blog/PostList.astro'
+import { localePaths, useTranslations } from '../../../i18n'
+import Layout from '../../../layouts/Layout.astro'
+import { getBlogPosts, pageLocale } from '../../../lib/content'
+import { pageCount, pageItems } from '../../../lib/pagination'
+
+export function getStaticPaths() {
+  return localePaths()
+}
+
+const lang = pageLocale(Astro.currentLocale, Astro.params.lang)
+const t = useTranslations(lang)
+const posts = await getBlogPosts(lang)
+---
+
+<Layout title={t('nav.archive')} description={t('blog.description')}>
+  <h1 class="sr-only">{t('nav.archive')}</h1>
+  <PostList posts={pageItems(posts, 1)} variant="archive" />
+  <Pager page={1} lastPage={pageCount(posts.length)} base="blog" />
+</Layout>

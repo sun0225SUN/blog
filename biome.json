@@ -1,0 +1,113 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**", "!node_modules", "!.astro", "!dist", "!**/*.md"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "tailwind": {
+    "stylesheet": "./src/styles/global.css"
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single"
+    }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true,
+      "indentScriptAndStyle": true,
+      "selfCloseVoidElements": "always"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "nursery": {
+        "noTailwindArbitraryValue": {
+          "level": "error",
+          "options": {
+            "allowedClasses": [
+              "bg-[url('/noise.png')]",
+              "bg-size-[128px_128px]",
+              "min-h-[60vh]",
+              "aria-[current=page]:underline"
+            ]
+          }
+        },
+        "noTailwindLegacyUtilities": "error",
+        "useTailwindShorthandClasses": "error",
+        "useTailwindSortedClasses": "error"
+      },
+      "suspicious": {
+        "noUnknownAtRules": {
+          "level": "error",
+          "options": {
+            "ignore": [
+              "plugin",
+              "config",
+              "theme",
+              "source",
+              "utility",
+              "variant",
+              "custom-variant",
+              "apply"
+            ]
+          }
+        }
+      }
+    },
+    "domains": {
+      "astro": "recommended",
+      "tailwind": "recommended"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["src/styles/a11y.css"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.svg", "**/*.astro"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noSvgWithoutTitle": "off",
+            "noRedundantRoles": "off"
+          }
+        }
+      }
+    }
+  ]
+}

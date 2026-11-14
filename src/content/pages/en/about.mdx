@@ -1,0 +1,17 @@
+---
+title: About
+description: A custom page stored with the other standalone pages.
+order: 1
+---
+
+import Callout from '../../../components/content/Callout.astro'
+
+Custom pages are for content that does not belong in the blog, such as an about page, links, a colophon, or a now page. They use a separate content collection and share one dynamic route.
+
+<Callout title="Where to put it">
+  Save a `.md` or `.mdx` file in `src/content/pages/<locale>/`. Its path relative to the locale directory becomes the URL: `en/about.mdx` maps to `/en/about`, while `en/projects/index.md` maps to `/en/projects/index`.
+</Callout>
+
+Every page requires `title` and `description`. Adding a file creates an accessible page, but does not add it to the main navigation automatically. Add its path to the `nav` array in `src/config.ts`; its position in that array controls the navigation order.
+
+Set `draft: true` to keep the page available for local preview while excluding it from production builds. To provide another language, create a file at the same relative path in that locale's directory. A localized route is generated only when that file exists.

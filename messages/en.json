@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "primary": "Primary",
+    "home": "Home",
+    "blog": "Archive",
+    "archive": "Archive",
+    "tags": "Tags"
+  },
+  "home": {
+    "empty": "No posts yet."
+  },
+  "site": {
+    "description": "Astro Air is a minimal multilingual blog theme made for independent writers. Clear typography and a comfortable reading experience come first, with light and dark themes, archives, categories, tags, RSS, responsive layouts, and Markdown/MDX authoring built in. It stays lightweight while leaving plenty of room for personal customization."
+  },
+  "blog": {
+    "description": "Posts from Astro Air.",
+    "latest": "Latest Posts",
+    "categories": "Categories",
+    "categoriesDescription": "All categories.",
+    "categoryDescription": "Posts filed under {name}.",
+    "tags": "Tags",
+    "tagsDescription": "All tags.",
+    "tagDescription": "Posts tagged {name}."
+  },
+  "post": {
+    "author": "Author",
+    "filedUnder": "Filed under",
+    "updated": "Updated",
+    "lastModified": "Last modified",
+    "readingTime": "{minutes} min read",
+    "toc": "Contents",
+    "backToTop": "Back to top",
+    "imageViewer": "Image",
+    "closeImage": "Close"
+  },
+  "skip": "Skip to content",
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you requested is not here.",
+    "home": "Go home"
+  },
+  "pager": {
+    "label": "Pagination",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "footer": {
+    "designedBy": "Designed by {author}",
+    "poweredBy": "Powered by {theme}",
+    "rss": "Subscribe via {rss}"
+  }
+}

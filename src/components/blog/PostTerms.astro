@@ -1,0 +1,26 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { localeFromParam, taxonomySlug } from '../../lib/content'
+
+interface Props {
+  tags?: string[]
+}
+
+const { tags = [] } = Astro.props
+const lang = localeFromParam(Astro.currentLocale)
+---
+
+{tags.length > 0 && (
+  <div class='space-x-3 pb-10 text-sm text-muted dark:text-muted-dark'>
+    {tags.map((tag) => (
+      <a
+        href={getRelativeLocaleUrl(lang, `blog/tag/${taxonomySlug(tag)}`)}
+        class='inline-block no-underline hover:scale-105'
+        data-umami-event='tag'
+        data-umami-event-name={tag}
+      >
+        #{tag}
+      </a>
+    ))}
+  </div>
+)}

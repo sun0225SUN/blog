@@ -1,0 +1,77 @@
+---
+import Moon from '@lucide/astro/icons/moon'
+import Sun from '@lucide/astro/icons/sun'
+---
+
+<button
+  type="button"
+  id="theme-toggle"
+  class="cursor-pointer"
+  aria-label="Toggle theme"
+  title="Toggle theme"
+  data-umami-event="theme-toggle"
+>
+  <Sun class="dark:hidden" size={22} aria-hidden="true" />
+  <Moon class="hidden dark:block" size={22} aria-hidden="true" />
+</button>
+<script is:inline>
+  const themeMedia = matchMedia('(prefers-color-scheme: dark)')
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      // The chosen theme still applies for this page.
+    }
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+    storeTheme(theme)
+  }
+
+  let themeTransition = 0
+
+  function toggleTheme(button) {
+    const next = document.documentElement.classList.contains('dark')
+      ? 'light'
+      : 'dark'
+    button.setAttribute('data-umami-event-theme', next)
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!document.startViewTransition || reduce) {
+      applyTheme(next)
+      return
+    }
+    const root = document.documentElement
+    const id = ++themeTransition
+    root.classList.add('theme-toggle')
+    const transition = document.startViewTransition(() => {
+      applyTheme(next)
+    })
+    const clear = () => {
+      if (id === themeTransition) root.classList.remove('theme-toggle')
+    }
+    transition.finished.then(clear, clear)
+  }
+
+  if (!window.__themeToggleBound) {
+    window.__themeToggleBound = true
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('#theme-toggle')
+      if (!button) return
+      toggleTheme(button)
+    })
+
+    window.addEventListener('storage', (event) => {
+      if (event.key !== 'theme') return
+      const theme =
+        event.newValue === 'dark' || event.newValue === 'light'
+          ? event.newValue
+          : themeMedia.matches
+            ? 'dark'
+            : 'light'
+      document.documentElement.classList.toggle('dark', theme === 'dark')
+    })
+  }
+</script>
