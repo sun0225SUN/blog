@@ -9,9 +9,6 @@
   "home": {
     "empty": "还没有文章。"
   },
-  "site": {
-    "description": "Guoqi Sun 的个人博客。年记、旅行、工作，以及一路上的折腾。"
-  },
   "blog": {
     "description": "全部文章。",
     "latest": "近期文章",
