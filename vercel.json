@@ -2,8 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "bunVersion": "1.x",
   "rewrites": [
-    { "source": "/en", "destination": "/" },
-    { "source": "/en/", "destination": "/" },
-    { "source": "/en/:path*", "destination": "/:path*" }
+    { "source": "/zh", "destination": "/" },
+    { "source": "/zh/", "destination": "/" },
+    { "source": "/zh/:path*", "destination": "/:path*" }
   ]
 }

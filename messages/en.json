@@ -10,10 +10,10 @@
     "empty": "No posts yet."
   },
   "site": {
-    "description": "Astro Air is a minimal multilingual blog theme made for independent writers. Clear typography and a comfortable reading experience come first, with light and dark themes, archives, categories, tags, RSS, responsive layouts, and Markdown/MDX authoring built in. It stays lightweight while leaving plenty of room for personal customization."
+    "description": "Guoqi Sun's blog. Year notes, travel, work, and the tinkering along the way."
   },
   "blog": {
-    "description": "Posts from Astro Air.",
+    "description": "All posts.",
     "latest": "Latest Posts",
     "categories": "Categories",
     "categoriesDescription": "All categories.",

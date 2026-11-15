@@ -10,10 +10,10 @@
     "empty": "还没有文章。"
   },
   "site": {
-    "description": "Astro Air 是一款为独立写作者打造的极简多语言博客主题。它以清晰的排版和舒适的阅读体验为核心，内置深浅色主题、文章归档、分类与标签、RSS 订阅和响应式布局，并支持 Markdown/MDX 内容创作。保持足够轻盈，也为个性化扩展留出空间。"
+    "description": "Guoqi Sun 的个人博客。年记、旅行、工作，以及一路上的折腾。"
   },
   "blog": {
-    "description": "Astro Air 的文章。",
+    "description": "全部文章。",
     "latest": "近期文章",
     "categories": "分类",
     "categoriesDescription": "全部分类。",

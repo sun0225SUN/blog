@@ -1,12 +1,12 @@
 export const config = {
-  title: 'Air',
+  title: 'Guoqi Sun',
   author: 'Guoqi Sun',
-  url: 'https://astro-air.guoqi.dev',
-  defaultLocale: 'en',
+  url: 'https://blog.guoqi.dev',
+  defaultLocale: 'zh',
   locales: ['en', 'zh', 'zh-tw', 'ja', 'ko'],
   blog: {
     // A positive integer, or 'all' to show every post.
-    perPage: 10,
+    perPage: 'all',
   } satisfies { perPage: number | 'all' },
   // Excalifont for Latin. Xiaolai, slightly larger, for other scripts.
   handwriting: true,

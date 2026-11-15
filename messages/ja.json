@@ -10,10 +10,10 @@
     "empty": "記事はまだありません。"
   },
   "site": {
-    "description": "Astro Air は、個人で活動する書き手のためのミニマルな多言語ブログテーマです。読みやすいタイポグラフィと心地よい読書体験を中心に、ライト・ダークテーマ、アーカイブ、カテゴリー、タグ、RSS、レスポンシブレイアウト、Markdown/MDX 執筆環境を備えています。軽快さを保ちながら、自分らしく拡張できる余白も残しています。"
+    "description": "Guoqi Sun のブログ。一年の記録、旅、仕事、そしてそのあいだの試行錯誤。"
   },
   "blog": {
-    "description": "Astro Air の記事。",
+    "description": "すべての記事。",
     "latest": "最近の記事",
     "categories": "カテゴリー",
     "categoriesDescription": "すべてのカテゴリー。",
